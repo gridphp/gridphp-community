@@ -1,0 +1,11 @@
+{
+    "name": "gridphp/gridphp-community",
+    "description": "GridPHP DataGrid Community Edition - Fast CRUD for legacy standalone PHP apps.",
+    "license": "proprietary",
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "classmap": ["lib/inc/"]
+    }
+}
