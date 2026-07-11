@@ -1,11 +1,17 @@
 {
-    "name": "gridphp/gridphp-community",
-    "description": "GridPHP DataGrid Community Edition - Fast CRUD for legacy standalone PHP apps.",
+    "name": "gridphp/gridphp-demos",
+    "description": "Interactive demo showcase for GridPHP. Includes pre-loaded sample datasets and production-ready CRUD grid configurations.",
+    "type": "project",
+    "homepage": "https://gridphp.com",
+    "keywords": ["gridphp-demos", "datagrid-examples", "crud-showcase", "php-grid-boilerplate","php datagrid", "php grid"],
     "license": "proprietary",
     "require": {
-        "php": ">=7.4"
+        "php": ">=7.4",
+        "gridphp/gridphp-community": "^1.0"
     },
-    "autoload": {
-        "classmap": ["lib/inc/"]
+    "scripts": {
+        "post-create-project-cmd": [
+            "@php -r \"echo '\\n\\033[1;32m🎉 GridPHP Demos Installed Successfully!\\033[0m\\n\\033[1;34mTo view all interactive demos locally, execute:\\n\\n👉 php -S localhost:8000 -t public/\\n\\nThen open your browser and navigate to http://localhost:8000\\033[0m\\n\\n';\""
+        ]
     }
 }
