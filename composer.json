@@ -7,7 +7,7 @@
     "license": "proprietary",
     "require": {
         "php": ">=7.4",
-        "gridphp/gridphp-community": "^1.0"
+        "gridphp/gridphp-community": "dev-main"
     },
     "scripts": {
         "post-create-project-cmd": [
