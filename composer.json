@@ -5,13 +5,15 @@
     "homepage": "https://gridphp.com",
     "keywords": ["gridphp-demos", "datagrid-examples", "crud-showcase", "php-grid-boilerplate","php datagrid", "php grid"],
     "license": "proprietary",
+    "minimum-stability": "dev",
+    "prefer-stable": true,    
     "require": {
         "php": ">=7.4",
         "gridphp/gridphp-community": "dev-main"
     },
     "scripts": {
         "post-create-project-cmd": [
-            "@php -r \"echo '\\n\\033[1;32m🎉 GridPHP Demos Installed Successfully!\\033[0m\\n\\033[1;34mTo view all interactive demos locally, execute:\\n\\n👉 php -S localhost:8000 -t public/\\n\\nThen open your browser and navigate to http://localhost:8000\\033[0m\\n\\n';\""
+            "@php -r \"echo '\\n\\033[1;32m🎉 GridPHP Demos Installed Successfully!\\033[0m\\n\\033[1;34mTo view all interactive demos locally, execute:\\n\\n👉 php -S localhost:8000\\n\\nThen open your browser and navigate to http://localhost:8000\\033[0m\\n\\n';\""
         ]
     }
 }
