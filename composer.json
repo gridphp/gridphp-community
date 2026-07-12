@@ -8,8 +8,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,    
     "require": {
-        "php": ">=7.4",
-        "gridphp/gridphp-community": "dev-main"
+        "php": ">=7.4"
     },
     "scripts": {
         "post-create-project-cmd": [
