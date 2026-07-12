@@ -1,5 +1,5 @@
 {
-    "name": "gridphp/gridphp-demos",
+    "name": "gridphp/gridphp-community",
     "description": "Interactive demo showcase for GridPHP. Includes pre-loaded sample datasets and production-ready CRUD grid configurations.",
     "type": "project",
     "homepage": "https://gridphp.com",
