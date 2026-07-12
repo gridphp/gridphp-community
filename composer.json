@@ -5,8 +5,6 @@
     "homepage": "https://gridphp.com",
     "keywords": ["gridphp-demos", "datagrid-examples", "crud-showcase", "php-grid-boilerplate","php datagrid", "php grid"],
     "license": "proprietary",
-    "minimum-stability": "dev",
-    "prefer-stable": true,    
     "require": {
         "php": ">=7.4"
     },
