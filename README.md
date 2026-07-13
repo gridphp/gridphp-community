@@ -38,7 +38,23 @@ php -S localhost:8080
 
 3. Open your browser and navigate directly to `http://localhost:8080` to interact with the dashboards.
 
-**Note:** In case of permission error on installation step, make sure the folder have write permission for the web user. e.g. run: `chown apache.apache gridphp-community -R`
+### Troubleshooting
+
+Q) Warning: The SQLite extension is not installed/enabled in PHP. Please enable it in your php.ini or select an alternate database (like MySQL) below.
+
+You need to install/enable sqlite extension in php. In linux (ubuntu) you would usually do:
+```bash
+apt install php8.3-sqlite3
+```
+
+Q) The configuration file is not writable.
+
+In case of permission error on installation step, make sure the folder have write permission for the web user. 
+e.g. If your webuser is apache, run:
+
+```bash
+chown apache.apache gridphp-community -R
+```
 
 ## Licensing
 
