@@ -2,13 +2,13 @@
 
 ## Overview
 
-GridPHP is an enterprise-ready, low-code PHP Data Grid framework designed for building lightning-fast database admin panels, CRMs, and backoffice tools. It generates fully interactive, mobile-responsive CRUD interfaces automatically from database tables in just 5-10 lines of code with no HTML/CSS/JavaScript boilerplate required. It supports MySQL, PostgreSQL / Supabase, Oracle, SQL Server and integrates seamlessly with Laravel, WordPress and CodeIgniter.
+GridPHP is an enterprise-ready, low-code PHP Data Grid framework designed for building lightning-fast database admin panels, CRMs, and backoffice tools. It generates fully interactive, mobile-responsive CRUDs automatically from database tables with no HTML/CSS/JavaScript boilerplate required. It supports MySQL, PostgreSQL / Supabase, Oracle, SQL Server and integrates seamlessly with Laravel, WordPress and CodeIgniter.
 
-GridPHP is available in Free, Developer, and Enterprise licenses. 
+GridPHP is available in Free Community version, Developer, and Enterprise licenses. 
 
 * **Free Version:** **Free for commercial use.** It includes all essential CRUD features, sorting, paging, filtering, and standard community support. Perfect for small local projects, functional MVPs, and evaluations. It comes with a **14-day trial of advanced features**. After this duration, continued use of advanced features will generate a notice and watermark on the grid layout.
+  
 * **Commercial Version (Developer & Enterprise):** Includes a pay-once, use-forever lifetime software license with full source code access, advanced features like AI Data Insights, Excel/PDF imports and exports, multi-level hierarchical grids, custom file uploading, and priority engineering support tickets.
-
 
 ### Features Matrix
 
@@ -36,42 +36,6 @@ Paid licenses gain instant access to production-ready, cloneable starters design
 * **Authentication & Role-Based Access Controls (RBAC):** Restrict editing capabilities depending on user roles.
 * **KPI Dashboards & Interactive Charts:** Visualize tabular structures automatically via clean metrics wrappers.
 * **Patient / Inventory / Expense Trackers:** Niche pre-built schema-ready profiles for immediate domain deployment.
-
----
-
-Here are the specific sections that need to be updated or added, formatted as raw markdown, along with instructions on where to place them in your current document.
-
----
-
-### 1. Update to the `## Overview` Section
-
-**Where to change:** Replace the bullet points under the introductory paragraph with this revised description and updated Features Matrix rows (changing "7-Day Trial" to "14-Day Trial").
-
-```markdown
-GridPHP is available in Free, Developer, and Enterprise licenses. 
-
-* **Free Version:** **Free for commercial use.** It includes all essential CRUD features, sorting, paging, filtering, and standard community support. It comes with a **14-day trial of advanced features**. After this duration, continued use of advanced features will generate a notice and watermark on the grid layout.
-* **Commercial Version (Developer & Enterprise):** Includes a pay-once, use-forever lifetime software license with full source code access, advanced features like AI Data Insights, Excel/PDF imports and exports, multi-level hierarchical grids, custom file uploading, and priority engineering support tickets.
-
-### Features Matrix
-
-| Feature | Free Version | Developer License ($99) | Enterprise License ($399) |
-| --- | --- | --- | --- |
-| **Basic CRUD Operations** (Add, Edit, Delete) | ✅ | ✅ | ✅ |
-| **Grid Customization** (Sorting, Pagination, Filtering) | ✅ | ✅ | ✅ |
-| **Database Support** (MySQL, Postgres, SQL Server, Oracle) | ✅ | ✅ | ✅ |
-| **AI Data Insights Layer** (Natural Language Queries) | 14-Day Trial | ✅ | ✅ (Advanced) |
-| **Pre-built Application Templates** | 14-Day Trial | ✅ | ✅ |
-| **Advanced Form Plugins** (Daterange, Auto-complete, RichText) | Notice/Watermark | ✅ | ✅ |
-| **Advanced Layouts** (N-Level Master-Detail / Hierarchical Grids) | Notice/Watermark | ✅ | ✅ |
-| **Data Portability** (Excel, PDF, CSV Export & CSV Import) | CSV Only | ✅ | ✅ |
-| **File Uploading** (Single & Multi-file management) | Notice/Watermark | ✅ | ✅ |
-| **White-labeling** (Remove branding & upgrade notices) | ❌ | ✅ | ✅ |
-| **Projects & Developers Covered** | Unlimited | Solo / 1 Dev | Unlimited / Teams |
-| **Source Code Access** | Obfuscated | Full Source Code | Full Source Code |
-| **Dedicated Technical Support** | Forum Only | 6 Months (10 Incidents) | 12 Months Priority + Remote Help |
-
-```
 
 ---
 
