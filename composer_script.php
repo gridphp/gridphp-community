@@ -53,6 +53,28 @@ class ComposerScript
     }
 
     /**
+     * Give the sample-db folder + file write access so the web server
+     * (whatever user it runs as) can create/write the SQLite database.
+     */
+    public static function fixDbPermissions($io): void
+    {
+        $dbDir  = __DIR__ . '/demos/sample-db';
+        $dbFile = $dbDir . '/database.db';
+ 
+        if (!is_dir($dbDir)) {
+            $io->writeError('<error>GridPHP: ' . $dbDir . ' does not exist, skipping permission fix.</error>');
+            return;
+        }
+ 
+        @chmod($dbDir, 0777);
+        if (file_exists($dbFile)) {
+            @chmod($dbFile, 0666);
+        }
+ 
+        $io->write('<info>GridPHP: demos/sample-db permissions set for write access.</info>');
+    }
+    
+    /**
      * Detect SQLite support, rename config.sample.php -> config.php,
      * and swap in SQLite connection placeholders.
      */
@@ -98,6 +120,9 @@ class ComposerScript
   
           @chmod(self::CONFIG_TARGET, 0644);
           $io->write('<info>GridPHP: config.php created with SQLite defaults.</info>');
+
+          // fix db permissions
+          self::fixDbPermissions($io);
         }  
     }
 
