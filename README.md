@@ -86,15 +86,11 @@ Creating your first interactive data grid requires nothing more than basic datab
 Pass your connection context arrays into the configuration block before rendering:
 
 ```php
-$db_conf = array(
-    "type" => "mysqli", 
-    "server" => "localhost",
-    "user" => "db_user",
-    "password" => "db_password",
-    "database" => "my_enterprise_db"
-);
-
-
+define("PHPGRID_DBTYPE","mysqi"); 
+define("PHPGRID_DBHOST","localhost");
+define("PHPGRID_DBUSER","db_user");
+define("PHPGRID_DBPASS","db_pass");
+define("PHPGRID_DBNAME","your_db_name");
 ```
 
 ### Step 2: Include Library & Container
