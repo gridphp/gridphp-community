@@ -10,7 +10,7 @@
     },
     "scripts": {
         "post-create-project-cmd": [
-            "@php -r \"echo '\\n\\033[1;32m🎉 GridPHP Demos Installed Successfully!\\033[0m\\n\\033[1;34mTo view all interactive demos locally, execute:\\n\\n👉 php -S localhost:8000\\n\\nThen open your browser and navigate to http://localhost:8000\\033[0m\\n\\n';\""
+            "@php -r \"printf('\\n\\033[1;32m🎉 GridPHP Demos Installed Successfully!\\033[0m\\n\\033[1;34mTo view all interactive demos locally, execute:\\n\\n👉 php -S localhost:8000\\n\\nThen open your browser and navigate to http://localhost:8000\\033[0m\\n\\n');\""
         ]
     }
 }
