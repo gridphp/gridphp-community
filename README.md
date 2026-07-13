@@ -4,6 +4,19 @@
 
 GridPHP is an enterprise-ready, low-code PHP Data Grid framework designed for building lightning-fast database admin panels, CRMs, and backoffice tools. It generates fully interactive, mobile-responsive CRUDs automatically from database tables with no HTML/CSS/JavaScript boilerplate required. It supports MySQL, PostgreSQL / Supabase, Oracle, SQL Server and integrates seamlessly with Laravel, WordPress and CodeIgniter.
 
+
+---
+
+### 📺 Feature Video Tour
+
+Discover how to build functional CRUD grids with advanced multi-level master-detail interactions, real-time filters, and clean schema deployments in under a minute:
+
+![GridPHP Live Walkthrough](https://www.gridphp.com/wp-content/uploads/prod-demo-v3.1-fast.gif)
+
+> 🎥 **Pro-Tip:** Click the player controls above to view the interface interactions in real-time.
+
+---
+
 ---
 
 ## 🖥️ Running the Demo Browser
@@ -26,29 +39,6 @@ php -S localhost:8080
 ```
 
 3. Open your browser and navigate directly to `http://localhost:8080` to interact with the dashboards.
-
----
-
-Here is the markdown section to add the feature tour video.
-
-Since GitHub markdown doesn't natively embed or play standard raw `.mp4` video files directly inline inside an image tag, it is best practice to display it using a styled video preview link wrapper.
-
-### Where to add this section:
-
-Insert this block directly underneath your `## Overview` paragraph, right before the `### Features Matrix` subsection.
-
-```markdown
-### 📺 Feature Video Tour
-
-Discover how to build functional CRUD grids with advanced multi-level master-detail interactions, real-time filters, and clean schema deployments in under a minute:
-
-[![Watch the GridPHP Feature Tour](https://www.gridphp.com/wp-content/uploads/gridphp-logo-dark.png)](https://www.gridphp.com/wp-content/uploads/prod-demo-v3.1.mp4?_=1)
-
-> 🎥 **Click above** to watch the feature video tour directly in your browser.
-
-```
-
----
 
 ## Licensing
 
