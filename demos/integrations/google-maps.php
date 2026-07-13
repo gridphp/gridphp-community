@@ -132,13 +132,12 @@ $out = $g->render("list1");
     <script>
 		function initMap() 
 		{
-		  
 			if (typeof google == 'undefined')
 			{
 				var oHead = document.body;
 				var oScript = document.createElement('script');
 				oScript.type = 'text/javascript';
-				oScript.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyA3s0SmXVoV0mD8ZLbbQ0ztNK_sUVF3EPk&libraries=places&callback=showMap';
+				oScript.src = 'https://maps.googleapis.com/maps/api/js?key=REPLACE_WITH_YOUR_GOOGLE_API_KEY&libraries=places&callback=showMap';
 				oHead.appendChild(oScript);
 			}
 			else
