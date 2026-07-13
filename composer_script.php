@@ -15,41 +15,62 @@ use Composer\Util\HttpDownloader;
  */
 class ComposerScript
 {
-    private const REMOTE_URL   = 'https://www.gridphp.com/secure/free/jqgrid_dist.phps';
-    private const TARGET_PATH  = __DIR__ . '/lib/inc/jqgrid_dist.php';
+    private const FILES_TO_FETCH = [
+        'https://www.gridphp.com/secure/free/jqgrid_dist.phps' => __DIR__ . '/lib/inc/jqgrid_dist.php',
+        'https://www.gridphp.com/secure/free/ai_grid.phps'     => __DIR__ . '/lib/inc/ai/ai_grid.php',
+    ];
+    
     private const CONFIG_SAMPLE = __DIR__ . '/config.sample.php';
     private const CONFIG_TARGET = __DIR__ . '/config.php';
 
     /**
-     * Fetch the (server-baked) core file over HTTP, using Composer's
-     * own downloader so proxy/auth/TLS config already set up for Composer
-     * is reused automatically.
+     * Fetch all registered remote files over HTTP using Composer's Downloader.
      */
-    public static function fetchCoreFile(Event $event): void
+    public static function fetchCoreFiles(Event $event): void
     {
         $io = $event->getIO();
 
         try {
             $downloader = new HttpDownloader($io, $event->getComposer()->getConfig());
-            $content = $downloader->get(self::REMOTE_URL)->getBody();
         } catch (\Exception $e) {
-            $io->writeError('<error>GridPHP: failed to fetch core lib - ' . $e->getMessage() . '</error>');
+            $io->writeError('<error>GridPHP: failed to initialize downloader - ' . $e->getMessage() . '</error>');
             exit(1);
         }
 
-        if ($content === null || trim($content) === '') {
-            $io->writeError('<error>GridPHP: core lib fetch returned empty response.</error>');
-            exit(1);
-        }
+        foreach (self::FILES_TO_FETCH as $remoteUrl => $targetPath) {
 
-        $bytes = @file_put_contents(self::TARGET_PATH, $content);
-        if ($bytes === false || $bytes !== strlen($content)) {
-            $io->writeError('<error>GridPHP: could not write core lib to ' . self::TARGET_PATH . '</error>');
-            exit(1);
-        }
+            try {
+                $content = $downloader->get($remoteUrl)->getBody();
+            } catch (\Exception $e) {
+                $io->writeError("<error>GridPHP: failed to fetch file from $remoteUrl - " . $e->getMessage() . "</error>");
+                exit(1);
+            }
 
-        @chmod(self::TARGET_PATH, 0644);
-        $io->write('<info>GridPHP: core lib installed.</info>');
+            if ($content === null || trim($content) === '') {
+                $io->writeError("<error>GridPHP: empty response returned from $remoteUrl</error>");
+                exit(1);
+            }
+
+            // Ensure destination directory structure exists (e.g., /lib/inc/ai/)
+            $directory = dirname($targetPath);
+            if (!is_dir($directory)) {
+                if (!@mkdir($directory, 0755, true) && !is_dir($directory)) {
+                    $io->writeError("<error>GridPHP: failed to create directory: $directory</error>");
+                    return;
+                }
+            }
+
+            // Write content to target file
+            $bytes = @file_put_contents($targetPath, $content);
+            if ($bytes === false || $bytes !== strlen($content)) {
+                $io->writeError("<error>GridPHP: could not write file to $targetPath</error>");
+                return;
+            }
+
+            @chmod($targetPath, 0644);
+        }
+        
+        $io->write("<info>GridPHP: core libs successfully installed.</info>");
     }
 
     /**
