@@ -2,27 +2,28 @@
 
 ## Overview
 
-GridPHP is an enterprise-ready, low-code PHP Data Grid framework designed for building lightning-fast database admin panels, CRMs, and backoffice tools. It generates fully interactive, mobile-responsive CRUD interfaces automatically from database tables in just 5-10 lines of code with no HTML/CSS/JavaScript boilerplate required. It supports MySQL, PostgreSQL, Oracle, SQL Server, and integrates seamlessly with Laravel, WordPress, CodeIgniter, and Supabase.
+GridPHP is an enterprise-ready, low-code PHP Data Grid framework designed for building lightning-fast database admin panels, CRMs, and backoffice tools. It generates fully interactive, mobile-responsive CRUD interfaces automatically from database tables in just 5-10 lines of code with no HTML/CSS/JavaScript boilerplate required. It supports MySQL, PostgreSQL / Supabase, Oracle, SQL Server and integrates seamlessly with Laravel, WordPress and CodeIgniter.
 
 GridPHP is available in Free, Developer, and Enterprise licenses. 
 
-* **Free Version:** Perfect for small local projects, functional MVPs, and evaluations. It includes all essential CRUD features, sorting, paging, filtering, and standard community support.
+* **Free Version:** **Free for commercial use.** It includes all essential CRUD features, sorting, paging, filtering, and standard community support. Perfect for small local projects, functional MVPs, and evaluations. It comes with a **14-day trial of advanced features**. After this duration, continued use of advanced features will generate a notice and watermark on the grid layout.
 * **Commercial Version (Developer & Enterprise):** Includes a pay-once, use-forever lifetime software license with full source code access, advanced features like AI Data Insights, Excel/PDF imports and exports, multi-level hierarchical grids, custom file uploading, and priority engineering support tickets.
+
 
 ### Features Matrix
 
 | Feature | Free Version | Developer License ($99) | Enterprise License ($399) |
-| :--- | :---: | :---: | :---: |
-| **Basic CRUD Operations** (Add, Edit, Delete) | Yes | Yes | Yes |
-| **Grid Customization** (Sorting, Pagination, Filtering) | Yes | Yes | Yes |
-| **Database Support** (MySQL, Postgres, SQL Server, Oracle) | Yes | Yes | Yes |
-| **AI Data Insights Layer** (Natural Language Queries) | 7-Day Trial | Yes | Advanced |
-| **Pre-built Application Templates** | 7-Day Trial | Yes | Yes |
-| **Advanced Form Plugins** (Daterange, Auto-complete, RichText) | No | Yes | Yes |
-| **Advanced Layouts** (N-Level Master-Detail / Hierarchical Grids) | No | Yes | Yes |
-| **Data Portability** (Excel, PDF, CSV Export & CSV Import) | CSV Only | Yes | Yes |
-| **File Uploading** (Single & Multi-file management) | No | Yes | Yes |
-| **White-labeling** (Remove branding & upgrade notices) | No | Yes | Yes |
+| --- | --- | --- | --- |
+| **Basic CRUD Operations** (Add, Edit, Delete) | ✅ | ✅ | ✅ |
+| **Grid Customization** (Sorting, Pagination, Filtering) | ✅ | ✅ | ✅ |
+| **Database Support** (MySQL, Postgres, SQL Server, Oracle) | ✅ | ✅ | ✅ |
+| **AI Data Insights Layer** (Natural Language Queries) | 14-Day Trial | ✅ | ✅ (Advanced) |
+| **Pre-built Application Templates** | 14-Day Trial | ✅ | ✅ |
+| **Advanced Form Plugins** (Daterange, Auto-complete, RichText) | Notice/Watermark | ✅ | ✅ |
+| **Advanced Layouts** (N-Level Master-Detail / Hierarchical Grids) | Notice/Watermark | ✅ | ✅ |
+| **Data Portability** (Excel, PDF, CSV Export & CSV Import) | CSV Only | ✅ | ✅ |
+| **File Uploading** (Single & Multi-file management) | Notice/Watermark | ✅ | ✅ |
+| **White-labeling** (Remove branding & upgrade notices) | ❌ | ✅ | ✅ |
 | **Projects & Developers Covered** | Unlimited | Solo / 1 Dev | Unlimited / Teams |
 | **Source Code Access** | Obfuscated | Full Source Code | Full Source Code |
 | **Dedicated Technical Support** | Forum Only | 6 Months (10 Incidents) | 12 Months Priority + Remote Help |
@@ -38,25 +39,70 @@ Paid licenses gain instant access to production-ready, cloneable starters design
 
 ---
 
-## Quick Start
+Here are the specific sections that need to be updated or added, formatted as raw markdown, along with instructions on where to place them in your current document.
 
-Creating your first interactive data grid requires nothing more than basic database credentials and mapping the target table identifier.
+---
 
-### Step 1: Include Library & Container
+### 1. Update to the `## Overview` Section
 
-Load the GridPHP dependencies into your file structure layout and map an HTML root node for viewport target output:
+**Where to change:** Replace the bullet points under the introductory paragraph with this revised description and updated Features Matrix rows (changing "7-Day Trial" to "14-Day Trial").
 
-```php
-<?php
-// Include the GridPHP core package library code
-include_once("lib/inc/jqgrid_dist.php");
+```markdown
+GridPHP is available in Free, Developer, and Enterprise licenses. 
 
-// Instantiate your Grid engine object container
-$grid = new jqgrid();
+* **Free Version:** **Free for commercial use.** It includes all essential CRUD features, sorting, paging, filtering, and standard community support. It comes with a **14-day trial of advanced features**. After this duration, continued use of advanced features will generate a notice and watermark on the grid layout.
+* **Commercial Version (Developer & Enterprise):** Includes a pay-once, use-forever lifetime software license with full source code access, advanced features like AI Data Insights, Excel/PDF imports and exports, multi-level hierarchical grids, custom file uploading, and priority engineering support tickets.
+
+### Features Matrix
+
+| Feature | Free Version | Developer License ($99) | Enterprise License ($399) |
+| --- | --- | --- | --- |
+| **Basic CRUD Operations** (Add, Edit, Delete) | ✅ | ✅ | ✅ |
+| **Grid Customization** (Sorting, Pagination, Filtering) | ✅ | ✅ | ✅ |
+| **Database Support** (MySQL, Postgres, SQL Server, Oracle) | ✅ | ✅ | ✅ |
+| **AI Data Insights Layer** (Natural Language Queries) | 14-Day Trial | ✅ | ✅ (Advanced) |
+| **Pre-built Application Templates** | 14-Day Trial | ✅ | ✅ |
+| **Advanced Form Plugins** (Daterange, Auto-complete, RichText) | Notice/Watermark | ✅ | ✅ |
+| **Advanced Layouts** (N-Level Master-Detail / Hierarchical Grids) | Notice/Watermark | ✅ | ✅ |
+| **Data Portability** (Excel, PDF, CSV Export & CSV Import) | CSV Only | ✅ | ✅ |
+| **File Uploading** (Single & Multi-file management) | Notice/Watermark | ✅ | ✅ |
+| **White-labeling** (Remove branding & upgrade notices) | ❌ | ✅ | ✅ |
+| **Projects & Developers Covered** | Unlimited | Solo / 1 Dev | Unlimited / Teams |
+| **Source Code Access** | Obfuscated | Full Source Code | Full Source Code |
+| **Dedicated Technical Support** | Forum Only | 6 Months (10 Incidents) | 12 Months Priority + Remote Help |
 
 ```
 
-### Step 2: Initialize & Configure Database Connection
+---
+
+## 🖥️ Running the Demo Browser
+
+You can spin up and explore an interactive local suite containing dozens of functional implementation templates instantly. The package bundles a pre-configured SQLite database that requires zero backend environment configuration or schema installation.
+
+To run the demo browser locally:
+
+1. Clone the repository structure into your local server environment root:
+```bash
+   git clone https://github.com/gridphp/gridphp-community
+
+```
+
+2. Start your local built-in PHP development server target from inside the project directory:
+```bash
+cd gridphp-community
+php -S localhost:8080
+
+```
+
+3. Open your browser and navigate directly to `http://localhost:8080` to interact with the dashboards.
+
+---
+
+## ⚡️ Quick Start
+
+Creating your first interactive data grid requires nothing more than basic database credentials and mapping the target table identifier.
+
+### Step 1: Initialize & Configure Database Connection
 
 Pass your connection context arrays into the configuration block before rendering:
 
@@ -69,7 +115,23 @@ $db_conf = array(
     "database" => "my_enterprise_db"
 );
 
-$grid->select_command = "SELECT id, name, company, reg_date, balance FROM clients";
+
+```
+
+### Step 2: Include Library & Container
+
+Load the GridPHP dependencies into your file structure layout and map an HTML root node for viewport target output:
+
+```php
+<?php
+// Include the db config
+include_once("config.php");
+
+// Include the GridPHP core package library code
+include_once("lib/inc/jqgrid_dist.php");
+
+// Instantiate your Grid engine object container
+$grid = new jqgrid();
 
 ```
 
@@ -80,15 +142,21 @@ Map structural properties and output clean compiled variables within the respons
 ```php
 // Define primary master table source target
 $grid->table = "clients";
+$grid->select_command = "SELECT id, name, company, reg_date, balance FROM clients";
 
 // Set global operational parameters 
-$opt["autoresize"] = true; // Mobile responsive window matching
-$opt["rowNum"] = 10;        // Initial row visibility counts
+$opt["rowNum"] = 20;        // Initial row visibility counts
 $grid->set_options($opt);
 
 // Compile server configurations into HTML/JS wrappers
-$output =$grid->render("my_first_grid");
-?>
+$output = $grid->render("my_first_grid");
+
+```
+### Step 3: Embed Dependencies & Output Presentation Layer
+
+Link your required frontend styles and runtime engine scripts, then output the compiled PHP data grid block cleanly where you want it to render inside your application viewport.
+
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -109,11 +177,6 @@ $output =$grid->render("my_first_grid");
 
 ---
 
-## Customizations & Integrations
-
-### Built-In Themes
-
-GridPHP packs 34 pre-built visual layout configurations, matching your existing application colors instantly. Layout adjustments run on responsive frameworks, offering unified styling out-of-the-box, alongside complete configuration access via the jQueryUI ThemeRoller ecosystem.
 
 ### Custom Server-Side Callbacks
 
@@ -130,6 +193,7 @@ function validate_and_update_client(&$data) {
 }
 
 ```
+## 🛠️ Customizations & Integrations
 
 ### Framework & Backend Compatibility
 
@@ -139,9 +203,14 @@ GridPHP does not dictate application framework rules. It drops directly into:
 * **Laravel / CodeIgniter Controllers** by loading grid render pipelines straight to framework views.
 * **Supabase / Managed Server Ecosystems** by passing the remote PostgreSQL connection credentials directly into the data matrix context.
 
+
+### Built-In Themes
+
+GridPHP packs 34 pre-built visual layout configurations, matching your existing application colors instantly. Layout adjustments run on responsive frameworks, offering unified styling out-of-the-box, alongside complete configuration access via the jQueryUI ThemeRoller ecosystem.
+
 ---
 
-## Support & Licensing
+## 🤝 Support & Licensing
 
 ### Plans
 
