@@ -21,7 +21,7 @@ class ComposerScript
     private const CONFIG_TARGET = __DIR__ . '/config.php';
 
     /**
-     * Fetch the (server-baked) trial core file over HTTP, using Composer's
+     * Fetch the (server-baked) core file over HTTP, using Composer's
      * own downloader so proxy/auth/TLS config already set up for Composer
      * is reused automatically.
      */
@@ -33,23 +33,23 @@ class ComposerScript
             $downloader = new HttpDownloader($io, $event->getComposer()->getConfig());
             $content = $downloader->get(self::REMOTE_URL)->getBody();
         } catch (\Exception $e) {
-            $io->writeError('<error>GridPHP: failed to fetch trial file - ' . $e->getMessage() . '</error>');
+            $io->writeError('<error>GridPHP: failed to fetch core lib - ' . $e->getMessage() . '</error>');
             exit(1);
         }
 
         if ($content === null || trim($content) === '') {
-            $io->writeError('<error>GridPHP: trial file fetch returned empty response.</error>');
+            $io->writeError('<error>GridPHP: core lib fetch returned empty response.</error>');
             exit(1);
         }
 
         $bytes = @file_put_contents(self::TARGET_PATH, $content);
         if ($bytes === false || $bytes !== strlen($content)) {
-            $io->writeError('<error>GridPHP: could not write trial file to ' . self::TARGET_PATH . '</error>');
+            $io->writeError('<error>GridPHP: could not write core lib to ' . self::TARGET_PATH . '</error>');
             exit(1);
         }
 
         @chmod(self::TARGET_PATH, 0644);
-        $io->write('<info>GridPHP: trial file installed.</info>');
+        $io->write('<info>GridPHP: core lib installed.</info>');
     }
 
     /**
@@ -79,14 +79,13 @@ class ComposerScript
               return;
           }
   
-          $dbPath = dirname(__FILE__) . '/demos/sample-db/database.db';
-  
           $replacements = [
               '{{dbtype}}' => 'sqlite3',
-              '{{dbhost}}' => $dbPath,
+              '"{{dbhost}}"' => "dirname(__FILE__).'/demos/sample-db/database.db'",
               '{{dbuser}}' => '',
               '{{dbpass}}' => '',
               '{{dbname}}' => '',
+              '{{apikey}}' => '',
           ];
   
           $contents = strtr($contents, $replacements);
