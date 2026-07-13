@@ -15,10 +15,6 @@ Discover how to build functional CRUD grids with advanced multi-level master-det
   <img src="https://i.vgy.me/fH4oH8.png" alt="Watch the GridPHP Feature Tour" width="100%" />
 </a>
 
-> 🎥 **Pro-Tip:** Click the player controls above to view the interface interactions in real-time.
-
----
-
 ---
 
 ## 🖥️ Running the Demo Browser
