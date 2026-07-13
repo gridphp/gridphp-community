@@ -1,6 +1,6 @@
 # PHP Data Grid | PHP CRUD Admin Panel Framework
 
-## Overview
+## 📖 Overview
 
 GridPHP is an enterprise-ready, low-code PHP Data Grid framework designed for building lightning-fast database admin panels, CRMs, and backoffice tools. It generates fully interactive, mobile-responsive CRUDs automatically from database tables with no HTML/CSS/JavaScript boilerplate required. It supports MySQL, PostgreSQL / Supabase, Oracle, SQL Server and integrates seamlessly with Laravel, WordPress and CodeIgniter.
 
