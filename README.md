@@ -131,7 +131,7 @@ $grid->set_options($opt);
 $output = $grid->render("my_first_grid");
 
 ```
-### Step 3: Embed Dependencies & Output Presentation Layer
+### Step 4: Embed Dependencies & Output Presentation Layer
 
 Link your required frontend styles and runtime engine scripts, then output the compiled PHP data grid block cleanly where you want it to render inside your application viewport.
 
