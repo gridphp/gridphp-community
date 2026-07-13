@@ -9,13 +9,8 @@
         "php": ">=7.4"
     },
     "scripts": {
-        "post-create-project-cmd": [
-            "echo '<info>🎉 GridPHP Demos Installed Successfully!</info>'",
-            "echo '<comment>To view all interactive demos locally, execute:</comment>'",
-            "echo ''",
-            "echo '👉 <comment>php -S localhost:8000</comment>'",
-            "echo ''",
-            "echo '<comment>Then open your browser and navigate to</comment> <info>http://localhost:8000</info>'"
-        ]
-    }
+    "post-create-project-cmd": [
+        "@php -r \"$win = strtoupper(substr(PHP_OS, 0, 3)) === 'WIN'; $c1 = $win ? '' : '\\033[1;32m'; $c2 = $win ? '' : '\\033[1;34m'; $r = $win ? '' : '\\033[0m'; printf('\\n%s🎉 GridPHP Demos Installed Successfully!%s\\n%sTo view all interactive demos locally, execute:\\n\\n👉 php -S localhost:8000\\n\\nThen open your browser and navigate to http://localhost:8000%s\\n\\n', $c1, $r, $c2, $r);\""
+    ]
+}
 }
