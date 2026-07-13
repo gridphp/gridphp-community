@@ -196,4 +196,3 @@ GridPHP packs 34 pre-built visual layout configurations, matching your existing 
 ### Priority Support
 
 Paid accounts unlock access to our formal engineering ticketing tracking system. Bug profiles, structural optimization reviews, or migration assistance queries receive dedicated troubleshooting attention within 2 business days.
-```
