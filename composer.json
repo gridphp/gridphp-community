@@ -13,7 +13,7 @@
     },
     "scripts": {
         "post-create-project-cmd": [
-            "ComposerScript::fetchCoreFile",
+            "ComposerScript::fetchCoreFiles",
             "ComposerScript::setupConfig",
             "ComposerScript::showSuccessBanner",
             "ComposerScript::cleanup"
