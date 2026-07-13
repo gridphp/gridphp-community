@@ -4,6 +4,54 @@
 
 GridPHP is an enterprise-ready, low-code PHP Data Grid framework designed for building lightning-fast database admin panels, CRMs, and backoffice tools. It generates fully interactive, mobile-responsive CRUDs automatically from database tables with no HTML/CSS/JavaScript boilerplate required. It supports MySQL, PostgreSQL / Supabase, Oracle, SQL Server and integrates seamlessly with Laravel, WordPress and CodeIgniter.
 
+---
+
+## 🖥️ Running the Demo Browser
+
+You can spin up and explore an interactive local suite containing dozens of functional implementation templates instantly. The package bundles a pre-configured SQLite database that requires zero backend environment configuration or schema installation.
+
+To run the demo browser locally:
+
+1. Clone the repository structure into your local server environment root:
+```bash
+git clone https://github.com/gridphp/gridphp-community
+
+```
+
+2. Start your local built-in PHP development server target from inside the project directory:
+```bash
+cd gridphp-community
+php -S localhost:8080
+
+```
+
+3. Open your browser and navigate directly to `http://localhost:8080` to interact with the dashboards.
+
+---
+
+Here is the markdown section to add the feature tour video.
+
+Since GitHub markdown doesn't natively embed or play standard raw `.mp4` video files directly inline inside an image tag, it is best practice to display it using a styled video preview link wrapper.
+
+### Where to add this section:
+
+Insert this block directly underneath your `## Overview` paragraph, right before the `### Features Matrix` subsection.
+
+```markdown
+### 📺 Feature Video Tour
+
+Discover how to build functional CRUD grids with advanced multi-level master-detail interactions, real-time filters, and clean schema deployments in under a minute:
+
+[![Watch the GridPHP Feature Tour](https://www.gridphp.com/wp-content/uploads/gridphp-logo-dark.png)](https://www.gridphp.com/wp-content/uploads/prod-demo-v3.1.mp4?_=1)
+
+> 🎥 **Click above** to watch the feature video tour directly in your browser.
+
+```
+
+---
+
+## Licensing
+
 GridPHP is available in Free Community version, Developer, and Enterprise licenses. 
 
 * **Free Version:** **Free for commercial use.** It includes all essential CRUD features, sorting, paging, filtering, and standard community support. Perfect for small local projects, functional MVPs, and evaluations. It comes with a **14-day trial of advanced features**. After this duration, continued use of advanced features will generate a notice and watermark on the grid layout.
@@ -36,31 +84,6 @@ Paid licenses gain instant access to production-ready, cloneable starters design
 * **Authentication & Role-Based Access Controls (RBAC):** Restrict editing capabilities depending on user roles.
 * **KPI Dashboards & Interactive Charts:** Visualize tabular structures automatically via clean metrics wrappers.
 * **Patient / Inventory / Expense Trackers:** Niche pre-built schema-ready profiles for immediate domain deployment.
-
----
-
-## 🖥️ Running the Demo Browser
-
-You can spin up and explore an interactive local suite containing dozens of functional implementation templates instantly. The package bundles a pre-configured SQLite database that requires zero backend environment configuration or schema installation.
-
-To run the demo browser locally:
-
-1. Clone the repository structure into your local server environment root:
-```bash
-   git clone https://github.com/gridphp/gridphp-community
-
-```
-
-2. Start your local built-in PHP development server target from inside the project directory:
-```bash
-cd gridphp-community
-php -S localhost:8080
-
-```
-
-3. Open your browser and navigate directly to `http://localhost:8080` to interact with the dashboards.
-
----
 
 ## ⚡️ Quick Start
 
