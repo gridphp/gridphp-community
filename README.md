@@ -42,6 +42,8 @@ php -S localhost:8080
 
 3. Open your browser and navigate directly to `http://localhost:8080` to interact with the dashboards.
 
+**Note:** In case of permission error on installation step, make sure the folder have write permission for the web user. e.g. run: `chown apache.apache gridphp-community -R`
+
 ## Licensing
 
 GridPHP is available in Free Community version, Developer, and Enterprise licenses. 
