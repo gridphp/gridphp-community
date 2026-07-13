@@ -11,7 +11,9 @@ GridPHP is an enterprise-ready, low-code PHP Data Grid framework designed for bu
 
 Discover how to build functional CRUD grids with advanced multi-level master-detail interactions, real-time filters, and clean schema deployments in under a minute:
 
-![GridPHP Live Walkthrough](https://www.gridphp.com/wp-content/uploads/prod-demo-v3.1-fast.gif)
+<a href="https://www.gridphp.com/wp-content/uploads/prod-demo-v3.1.mp4?_=1" target="_blank">
+  <img src="https://i.vgy.me/fH4oH8.png" alt="Watch the GridPHP Feature Tour" width="100%" />
+</a>
 
 > 🎥 **Pro-Tip:** Click the player controls above to view the interface interactions in real-time.
 
