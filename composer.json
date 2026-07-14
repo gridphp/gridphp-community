@@ -1,6 +1,6 @@
 {
     "name": "gridphp/gridphp-community",
-    "description": "GridPHP is an enterprise-ready, low-code PHP DataGrid framework designed for building lightning-fast CRUD, database admin panels, CRMs, and backoffice tools. It generates fully interactive, mobile-responsive CRUDs automatically from database tables with no HTML/CSS/JavaScript boilerplate required. It supports MySQL, PostgreSQL / Supabase, Oracle, SQL Server and integrates seamlessly with Laravel, WordPress and CodeIgniter.",
+    "description": "GridPHP is an enterprise-ready, low-code PHP DataGrid designed for building lightning-fast CRUD, database admin panels, CRMs and backoffice tools. It generates fully interactive, mobile-ready CRUDs automatically from database tables. It supports MySQL, PostgreSQL/Supabase, Oracle, SQLServer and integrates seamlessly with Laravel, WordPress and CodeIgniter",
     "type": "project",
     "homepage": "https://gridphp.com",
     "keywords": ["gridphp-demos", "datagrid-examples", "crud-showcase", "php-grid-boilerplate","php datagrid", "php grid"],
