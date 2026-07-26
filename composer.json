@@ -1,6 +1,6 @@
 {
     "name": "gridphp/gridphp-community",
-    "description": "Interactive demo showcase for GridPHP. Includes pre-loaded sample datasets and production-ready CRUD grid configurations.",
+    "description": "GridPHP is an low-code DataGrid designed for building lightning-fast CRUD, DB admin panels, CRMs & backoffice tools. It generates fully interactive, mobile-ready CRUDs automatically from db tables of MySQL, PostgreSQL/Supabase, Oracle, SQLServer & integrates with Laravel, WordPress & CodeIgniter",
     "type": "project",
     "homepage": "https://gridphp.com",
     "keywords": ["gridphp-demos", "datagrid-examples", "crud-showcase", "php-grid-boilerplate","php datagrid", "php grid"],
@@ -14,7 +14,7 @@
     },
     "scripts": {
         "post-create-project-cmd": [
-            "ComposerScript::fetchCoreFile",
+            "ComposerScript::fetchCoreFiles",
             "ComposerScript::setupConfig",
             "ComposerScript::showSuccessBanner",
             "ComposerScript::cleanup"

@@ -25,7 +25,7 @@ To run the demo browser locally:
 
 1. Clone the repository structure into your local server environment root:
 ```bash
-git clone https://github.com/gridphp/gridphp-community
+composer create-project gridphp/gridphp-community
 
 ```
 
@@ -46,15 +46,7 @@ You need to install/enable sqlite extension in php. In linux (ubuntu) you would 
 ```bash
 apt install php8.3-sqlite3
 ```
-
-Q) The configuration file is not writable.
-
-In case of permission error on installation step, make sure the folder have write permission for the web user. 
-e.g. If your webuser is apache, run:
-
-```bash
-chown apache.apache gridphp-community -R
-```
+Remember to restart your webserver aftter that.
 
 ## Licensing
 
