@@ -9,7 +9,8 @@
         "php": ">=7.4"
     },
     "autoload": {
-        "classmap": ["composer_script.php"]
+        "classmap": ["composer_script.php"],
+        "files": ["lib/inc/jqgrid_dist.php"]
     },
     "scripts": {
         "post-create-project-cmd": [
