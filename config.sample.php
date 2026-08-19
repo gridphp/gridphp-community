@@ -15,9 +15,9 @@ define("PHPGRID_DBCHARSET","utf8");
 define("PHPGRID_DEBUG","1");
 
 // OpenAI /v1/chat/completions complaint Api Key
-define("AI_ENDPOINT","");
-define("AI_MODEL","");
-define("AI_APIKEY","");
+define("AI_ENDPOINT","https://api.openai.com/v1/chat/completions");
+define("AI_MODEL","gpt-4o-mini");
+define("AI_APIKEY","sk-...");
 
 // Basepath for lib
 define("PHPGRID_LIBPATH",dirname(__FILE__).DIRECTORY_SEPARATOR."lib".DIRECTORY_SEPARATOR);
