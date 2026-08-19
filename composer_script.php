@@ -17,7 +17,7 @@ class ComposerScript
 {
     private const FILES_TO_FETCH = [
         'https://www.gridphp.com/secure/free/jqgrid_dist.phps' => __DIR__ . '/lib/inc/jqgrid_dist.php',
-        'https://www.gridphp.com/secure/free/ai_grid.phps'     => __DIR__ . '/lib/inc/ai/ai_grid.php',
+        'https://www.gridphp.com/secure/free/jqgrid_ai.phps'     => __DIR__ . '/lib/inc/jqgrid_ai.php',
     ];
     
     private const CONFIG_SAMPLE = __DIR__ . '/config.sample.php';
@@ -51,7 +51,7 @@ class ComposerScript
                 exit(1);
             }
 
-            // Ensure destination directory structure exists (e.g., /lib/inc/ai/)
+            // Ensure destination directory structure exists (e.g., /lib/inc/)
             $directory = dirname($targetPath);
             if (!is_dir($directory)) {
                 if (!@mkdir($directory, 0755, true) && !is_dir($directory)) {
