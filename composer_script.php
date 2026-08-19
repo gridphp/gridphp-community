@@ -154,32 +154,45 @@ class ComposerScript
      */
     public static function showSuccessBanner(Event $event): void
     {
-        $isWindows = strtoupper(substr(PHP_OS, 0, 3)) === 'WIN';
-        $fg = $isWindows ? '' : "\033[37m";
-        $bg = $isWindows ? '' : "\033[44m";
-        $rs = $isWindows ? '' : "\033[0m";
+        $fg = "\033[37m";
+        $bg = "\033[44m";
+        $rs = "\033[0m";
 
-        $title = 'GridPHP Demos Installed Successfully!';
+        $blue = "\033[34m";
+        $reset = "\033[0m";
+        $title = 'GridPHP + Demos installed successfully!';
+        
+        $width = strlen($title) + 8;
+        $paddedTitle = str_pad(' ' . $title . ' ', $width, ' ', STR_PAD_BOTH);
+
         $lines = [
+            '',
             'To view all interactive demos locally, execute:',
             '',
             '👉  php -S localhost:8000',
             '',
             'Then open your browser and navigate to http://localhost:8000',
+            "",
+            "New to GridPHP? Check out our documentation.",
+            "",
+            "Build something amazing!",
         ];
 
-        $width = mb_strlen($title) + 4;
+        echo "\n " . $fg . $bg . $paddedTitle . $rs . "\n\n";
+        echo " ┌ {$blue}Application ready{$reset} ───────────────────────────────────────────┐\n";
         foreach ($lines as $line) {
-            $width = max($width, mb_strlen($line) + 2);
+            $paddedLine = str_pad($line, 61);
+            if (strpos($paddedLine, 'documentation') !== false) {
+                // Add terminal hyperlink for "documentation" with blue and underline ANSI codes
+                $paddedLine = str_replace(
+                    'documentation',
+                    "\033]8;;https://gridphp.com/docs\033\\\033[34;4mdocumentation\033[0m\033]8;;\033\\",
+                    $paddedLine
+                );
+            }
+            echo " │ " . $paddedLine . "│\n";
         }
-
-        $bannerText = ' ' . $title . ' ';
-        $padded = str_pad($bannerText, $width, ' ', STR_PAD_BOTH);
-
-        echo "\n" . $fg . $bg . $padded . $rs . "\n\n";
-        foreach ($lines as $line) {
-            echo ' ' . $line . "\n";
-        }
+        echo " └──────────────────────────────────────────────────────────────┘\n";
         echo "\n";
     }
 
