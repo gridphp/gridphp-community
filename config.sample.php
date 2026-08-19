@@ -1,7 +1,7 @@
 <?php
 // PHP Grid database connection settings, Only need to update these in new project
 
-// replace {{dbtype}} with one of these: mysqli,oci8 (for oracle),mssqlnative,postgres,sybase. Don't include {{ }}
+// Replace {{dbtype}} with one of these: mysqli,oci8 (for oracle),mssqlnative,postgres,sqlite,sybase. Don't include {{ }}
 define("PHPGRID_DBTYPE","{{dbtype}}"); 
 define("PHPGRID_DBHOST","{{dbhost}}");
 define("PHPGRID_DBUSER","{{dbuser}}");
@@ -14,8 +14,10 @@ define("PHPGRID_DBCHARSET","utf8");
 // Show debugging message in case of an issue, should be turned off for production
 define("PHPGRID_DEBUG","1");
 
-// AI Api Key, Free API Key available at https://console.groq.com/keys  
-define("PHPGRID_AI_KEY","{{apikey}}");
+// OpenAI /v1/chat/completions complaint Api Key
+define("AI_ENDPOINT","");
+define("AI_MODEL","");
+define("AI_APIKEY","");
 
 // Basepath for lib
 define("PHPGRID_LIBPATH",dirname(__FILE__).DIRECTORY_SEPARATOR."lib".DIRECTORY_SEPARATOR);

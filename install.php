@@ -32,8 +32,7 @@ if ($sqlite_installed && empty($_POST))
 		'dbhost' => "demos/sample-db/database.db",
 		'dbuser' => '',
 		'dbpass' => '',
-		'dbname' => '',
-		'apikey' => ''
+		'dbname' => ''
 	];
 }
 
@@ -201,8 +200,6 @@ function do_install()
 		$configContents = str_replace("{{dbhost}}", $dbhost, $configContents);
 		$configContents = str_replace("{{dbname}}", $dbname, $configContents);
 	}
-
-	$configContents = str_replace("{{apikey}}", $apikey, $configContents);
 
 	$handle = fopen("config.php", "w+");
 	
@@ -405,16 +402,6 @@ function do_install()
 										Create Database
 									</label>
 								</div>
-							</div>
-						</div>
-
-						<!-- Apikey input-->
-						<div class="control-group">
-							<label class="control-label" for="apikey">AI API Key</label>
-							<div class="controls">
-								<input id="apikey" name="apikey" type="text" placeholder="" class="input-xlarge"
-									value="<?php echo isset($_POST['apikey']) ? $_POST['apikey'] : "" ?>">
-								<span class="help">You can obtain a Free AI API key from <a href='https://console.groq.com/' target='_blank'>Groq Cloud Platform</a>. — (Optional)</span>
 							</div>
 						</div>
 

@@ -10,8 +10,6 @@ Grid component itself contain a CRUD (create,read,update,delete) function which 
 It support connection to all major database engines including SQL Server, Oracle, IBM DB2, MySQL, Postgres and others.
 It has master-detail, subgrid, data grouping, file uploading, excel mode and many other features.
 
-[Live Interactive Demo](https://www.gridphp.com/demo/demos/promo/index.php)
-
 ### Setting up the package
 
 Get started by downloading and running the community package locally:
@@ -26,6 +24,7 @@ Get started by downloading and running the community package locally:
 	Or
 	```bash
 	wget https://www.gridphp.com/wp-content/uploads/gridphp-free-latest.zip
+	unzip gridphp-free-latest.zip
 	```
 
 2. Extract the package and move to your web server root 
@@ -33,11 +32,12 @@ Get started by downloading and running the community package locally:
 	OR Run via PHP built-in server:
 
 	```bash
-	unzip gridphp-free-latest.zip
 	cd gridphp-community-main
 	php -S localhost:8000
 	```
 	Open [http://localhost:8080](http://localhost:8080) in your browser.
+
+	[Live Interactive Demo](https://www.gridphp.com/demo/demos/promo/index.php)
 
 	<Badge text="Note" variant="caution" /> In case you see "The SQLite extension is not installed/enabled in PHP":
 	
@@ -249,7 +249,7 @@ We can pick certain columns to be displayed on grid by using `->set_columns($col
 	// pass the cooked columns to grid
 	$g->set_columns($cols);
 
-### Customizing Desired Columns
+### Customizing Specific Columns
 
 If you want to customize any specific column properties, and let other columns be displayed from table definition, you can pass 2nd argument of `set_columns($cols,true)` to `true`.
 
@@ -263,8 +263,6 @@ If you want to customize any specific column properties, and let other columns b
 Only column with name 'company' will be changed to textarea and rest table column will be displayed as they were before.
 
 **NOTE**: The first column must have unique data (usually PK) in order to work properly. It is required to identify and perform row wise operations. You can make it hidden in grid if you wish. See `hidden` property in later section for more.
-
-### Resources
 
 - [See Live Demo](//www.gridphp.com/demo/demos/appearance/image.php)
 - You can check this demo in archive `demos/appearance/image.php`
@@ -322,6 +320,8 @@ The following limitations tell you when frozen columns can not be set-up:
 	- When scroll is set to true or 1
 	- When Data grouping is enabled
 	- When footer row (footerrow paremeter) is enabled
+
+[See Live Demo](//www.gridphp.com/demo/demos/appearance/frozen-columns.php)
 
 ### Allow null (true,false)
 
@@ -1260,8 +1260,6 @@ To extra params passed to detail grid, column name comma separated
 	# To read passed params in detail grid code
 	$company = $_GET["company"];
 
-### Resources
-
 - [See Live Demo](//www.gridphp.com/demo/demos/master-detail/master-detail.php)
 - You can check this demo in archive `demos/master-detail/master-detail.php`
 
@@ -1289,8 +1287,6 @@ For extra params passed from parent other than rowid (e.g. company), we need som
 	 	$_SESSION["company"] = $_POST['company'];
 	$company = $_SESSION['company'];
 
-### Resources
-
 - [See Live Demo](//www.gridphp.com/demo/demos/master-detail/subgrid.php)
 - You can check this demo in archive `demos/master-detail/subgrid.php`
 
@@ -1311,11 +1307,9 @@ To define multiple subgrid at same level, just render 2 grids in detail grid pag
 	echo "<fieldset><legend>First Grid</legend>$out</fieldset>";
 	echo "<fieldset><legend>Second Grid</legend>$out2</fieldset>";
 
-### Resources
-
 - [See Live Demo](//www.gridphp.com/demo/demos/master-detail/multi-subgrid.php)
 - [Parent Grid Code](//www.gridphp.com/demo/demos/master-detail/multi-subgrid.phps)
-- [Detail Grid Code](//www.gridphp.com/demo/demos/master-detail/multi-subgrid-detail.phps)
+- [Detail Grid Code](//www.gridphp.com/demo/demos/master-detail/multi-subgrid_detail.phps)
 - You can check this demo in archive `demos/master-detail/multi-subgrid.php`
 
 ## Exporting Data
@@ -1372,8 +1366,6 @@ You can also add export buttons on toolbar by:
 						)
 					);
 
-### Resources
-
 - [See Live Demo](//www.gridphp.com/demo/demos/export/export-all.php)
 - You can check this demo in archive `demos/export/export-all.php`
 
@@ -1427,8 +1419,6 @@ To show import dialog on startup, set this code in loadComplete event. Here list
 										} 
 									}";
 									
-### Resources
-
 - [See Live Demo](//www.gridphp.com/demo/demos/export/import.php)
 - You can check this demo in archive `demos/export/import.php`
 
@@ -1476,8 +1466,6 @@ Finally, you need to call `set_conditional_css` of grid object to enable formatt
 
 Refer demos/appearance/conditional-format.php for reference.
 
-### Resources
-
 - [See Live Demo](//www.gridphp.com/demo/demos/appearance/conditional-format.php)
 - You can check this demo in archive `demos/appearance/conditional-format.php`
 
@@ -1523,8 +1511,6 @@ Following setting will enable grouping footer in grid. (see grouping.php)
 			"function (displayValue, cm, index, grp) { return displayValue[0].toUpperCase() + displayValue.substring(1).toLowerCase(); }"
 		);
 
-### Resources
-
 - [See Live Demo](//www.gridphp.com/demo/demos/appearance/grouping.php)
 - You can check this demo in archive `demos/appearance/grouping.php`
 
@@ -1552,8 +1538,6 @@ It would help in categorizing your related columns. (demos/appearance/group-head
 							    )
 							)
 						);
-
-### Resources
 
 - [See Live Demo](//www.gridphp.com/demo/demos/appearance/group-headers.php)
 - You can check this demo in archive `demos/appearance/group-headers.php`
@@ -1600,8 +1584,6 @@ Possible values are `simple`, `advance`
 
 ![Group Search Dialog](//www.gridphp.com/wp-content/gallery/images-v2/search-group.png)
 
-### Resources
-
 - [See Live Demo](//www.gridphp.com/demo/demos/search/search-group.php)
 - You can check this demo in archive `demos/search/search-group.php`
 
@@ -1631,8 +1613,6 @@ You can also set predefined search templates using grid options.
 
 ![Search Templates](//www.gridphp.com/wp-content/gallery/images-v2/search-template.png)
 
-### Resources
-
 - [See Live Demo](//www.gridphp.com/demo/demos/search/search-template.php)
 - You can check this demo in archive `demos/search/search-template.php`
 
@@ -1642,8 +1622,6 @@ For further customizations, you can create an custom HTML form and
 connect it to datagrid search javascript api.
 
 ![External Search Form](//www.gridphp.com/wp-content/gallery/images-v2/search-custom.png)
-
-### Resources
 
 - [See Live Demo](//www.gridphp.com/demo/demos/search/search-form.php)
 - You can check this demo in archive `demos/search/search-form.php`
@@ -1668,8 +1646,6 @@ If you wish to persist search settings on page reload:
 
 	$opt["persistsearch"] = true;
 
-### Resources
-
 - [See Live Demo](//www.gridphp.com/demo/demos/search/search-onload.php)
 - You can check this demo in archive `demos/search/search-onload.php`
 
@@ -1682,8 +1658,6 @@ You can add multiple filtering (AND) conditions as shown in image.
 ![URL Based Filtering](https://www.gridphp.com/wp-content/uploads/v26-search_url.png)
 
 To have a numeric range filter, (total > 10) you can set e.g. ?grid_id=list1&filter_total=>10
-
-### Resources
 
 - [See Live Demo](//www.gridphp.com/demo/demos/search/search-onload-url.php)
 - You can check this demo in archive `demos/search/search-onload-url.php`
@@ -1872,8 +1846,6 @@ Step2: Define JS event handler (where 'list1' is grid id and 'company' is field 
 	<br>
 	Company: <span id="span_extra">Not Selected</span>
 
-### Resources
-
 - [See Live Demo](//www.gridphp.com/demo/demos/editing/custom-events.php)
 - You can check this demo in archive `demos/editing/custom-events.php`
 
@@ -1935,8 +1907,6 @@ Callback function will receive the posted data. e.g. for add dialog:
 
 	$opt["add_options"]["beforeSubmit"] = "function(d){ console.log(d); return false; }";
 
-### Resources
-
 - [See Live Demo](//www.gridphp.com/demo/demos/editing/js-validation.php)
 - You can check this demo in archive `demos/editing/js-validation.php`
 
@@ -1966,8 +1936,6 @@ Step2: The helper function ‘phpgrid_error’ will display your server side val
 
 		$grid->execute_query("INSERT INTO clients VALUES (null,'{$data["params"]["name"]}','{$data["params"]["gender"]}','{$data["params"]["company"]}')");
 	}
-
-### Resources
 
 - [See Live Demo](//www.gridphp.com/demo/demos/editing/server-validation.php)
 - You can check this demo in archive `demos/editing/server-validation.php`
@@ -2035,8 +2003,6 @@ e.g. setting following in php.ini set 64 MB upload limit.
 
 More details can be checked here: https://stackoverflow.com/a/16102850/385377
 
-### Resources
-
 - [See Live Demo](//www.gridphp.com/demo/demos/editing/file-upload.php)
 - You can check this demo in archive `demos/editing/file-upload.php`
 
@@ -2073,8 +2039,6 @@ If using formatter in columns (like currency etc), you need to pass 4th param to
 	grid.jqGrid('footerData','set', { id: 'Total: €' + sum.toFixed(2) }, false);
 
 For more advanced example, refer sample code below.
-
-### Resources
 
 - [See Live Demo](//www.gridphp.com/demo/demos/appearance/footer-row.php)
 - You can check this demo in archive `demos/appearance/footer-row.php`
@@ -2144,8 +2108,6 @@ By default, autocomplete uses 'contains' search. To switch to 'begins with' set:
 
 	$col["formatoptions"]["op"] = "bw";
 
-### Resources
-
 - [See Live Demo](//www.gridphp.com/demo/demos/integrations/autocomplete.php)
 - You can check this demo in archive `demos/integrations/autocomplete.php`
 
@@ -2203,8 +2165,6 @@ If your column contains foreign key data (like client_id) then implementation wi
 	$cols[] = $col;
 
 ![Multiselect Filter Search](//www.gridphp.com/wp-content/gallery/images-v2/multiselect-filter.png)
-
-### Resources
 
 - [See Live Demo](//www.gridphp.com/demo/demos/integrations/multiselect-filter.php)
 - You can check this demo in archive `demos/integrations/multiselect-filter.php`
@@ -2330,8 +2290,6 @@ Step2: Before displaying grid echo $out, set persistence options in script tag:
 - Option `storageKey` should be unique for each grid, otherwise settings will mix-up.
 - It uses client side browser storage. To persist on server, refer demo code below.
 
-### Resources
-
 - [See Live Demo](//www.gridphp.com/demo/demos/misc/persist-settings.php)
 - You can check this demo in archive `demos/misc/persist-settings.php`
 
@@ -2383,8 +2341,6 @@ And display of add/edit/view dialogs are transposed as well.
 ![Dialogs in responsive mode](//www.gridphp.com/wp-content/gallery/documentation/responsive-edit.png)
 ![Dialogs in responsive mode](//www.gridphp.com/wp-content/gallery/documentation/responsive-view.png)
 
-### Resources
-
 - [See Live Demo](//www.gridphp.com/demo/demos/appearance/responsive.php)
 - You can check this demo in archive `demos/appearance/responsive.php`
 
@@ -2406,8 +2362,6 @@ To enable text labels in your desired language, change source of the local javas
 
 	<!-- to enable italian -->
 	<script src="js/jqgrid/js/i18n/grid.locale-it.js" type="text/javascript"></script>
-
-### Resources
 
 - [See Live Demo](//www.gridphp.com/demo/demos/misc/localization.php)
 - You can check this demo in archive `demos/misc/localization.php`
@@ -2468,8 +2422,6 @@ Steps:
 - From archive copy image folder to your new-theme 
 - From archive copy jquery-ui.min.css to your new-theme and rename as jquery-ui.custom.css
 
-### Resources
-
 - [See Live Demo](//www.gridphp.com/demo/demos/appearance/themes.php)
 - You can check this demo in archive `demos/appearance/themes.php`
 
@@ -2514,8 +2466,6 @@ Using PDO for SQL Server Azure:
 	include("../../lib/inc/jqgrid_dist.php");
 	$g = new jqgrid($db_conf);	
 
-### Resources
-
 - [Sample Code](//www.gridphp.com/demo/demos/loading/db-layer-sqlsvr.phps)
 - You can check this demo in archive `demos/loading/db-layer-sqlsvr.php`
 
@@ -2531,8 +2481,6 @@ Following code snippet connect PHP Grid with Postgres.
 	$db_conf["database"] = "testdb"
 
 	$g = new jqgrid($db_conf);
-
-### Resources
 
 - [Sample Code](//www.gridphp.com/demo/demos/loading/db-layer-pgsql.phps)
 - You can check this demo in archive `demos/loading/db-layer-pgsql.php`
@@ -2550,8 +2498,6 @@ Following code snippet connect PHP Grid with Oracle.
 
 	include("../../lib/inc/jqgrid_dist.php");
 	$g = new jqgrid($db_conf);
-
-### Resources
 
 - [Oracle Sample Code](//www.gridphp.com/demo/demos/loading/db-layer-oracle.phps)
 - You can check this demo in archive `demos/loading/oracle-master-detail.php`
@@ -2597,8 +2543,6 @@ In order to debug Search queries, set:
 By enabling `debug_sql` or `debug_search` configuration, you will see SQL queries being sent to database in error message box.
 You can also close error box and continue next debug step.
 
-### Resources
-
 - [See Reference](//www.gridphp.com/updates/running-php-grid-in-debug-mode/)
 
 ## Basic Todo List Application
@@ -2619,8 +2563,6 @@ Desktop screen:
 Mobile screen:
 
 ![Mobile View](//www.gridphp.com/wp-content/uploads/todo-app.gif)
-
-### Resources
 
 - [Live Demo](//www.gridphp.com/demo/demos/apps/todos.php)
 
@@ -2874,7 +2816,243 @@ You can create more snippets by copying code from package demos and assign new u
 
 ## Codeigniter Integration
 
-We've made a quick walk-through how to integrate the smart PHP DataGrid with CodeIgniter framework. For this, we have used:
+### Using Composer
+
+Run `create-project` to create a new project:
+
+```bash
+composer create-project gridphp/ci4-starter my-app
+```
+
+Start local server by running:
+
+```bash
+cd my-app
+php spark serve
+```
+Then open [http://localhost:8080](http://localhost:8080) in your browser.
+
+**OR**, you can move `my-app` folder to your local web server's root folder and use `my-app/public` as your site url.
+Example: `http://localhost/my-app/public/`
+
+Output:
+
+![GridPHP CodeIgniter Integration](https://www.gridphp.com/wp-content/uploads/ci4-starter.jpg)
+
+#### Directory & File Overview
+
+We used the [Codeigniter4 starter](https://github.com/codeigniter4/appstarter) as our base project. We further added following files for the quickstart:
+
+- `app/Config/GridPHP.php`: Bridge configuration connecting CI4 database settings to GridPHP.
+- `app/Controllers/Home.php`: Controller featuring master and detail grid methods.
+- `app/Views/welcome_message.php`: View file loading GridPHP styles/scripts and displaying grid output.
+- `app/Config/Routes.php`: Added routes for grid examples.
+- `writable/db/database.db`: SQLite database for sample data
+- `public/gridphp/assets/`: Published GridPHP front-end dependencies (JS, CSS, Themes).
+
+By default, the database configuration is set to SQLite database in `.env`, it uses bundled SQLite sample database containing sample `customers`, `orders` and other tables.
+     
+```ini
+database.default.hostname =  
+database.default.database = ./writable/db/database.db
+database.default.username =   
+database.default.password =  
+database.default.DBDriver = SQLite3
+```
+
+---
+
+Below are step-by-step walkthroughs demonstrating how to build a basic single-table grid ("Hello World") and an advanced Master-Detail grid.
+
+#### Walkthrough 1: "Hello World" Grid
+
+This walkthrough creates a simple, zero-configuration datagrid bound directly to a database table with no extra bells and whistles.
+
+##### 1. Controller (`app/Controllers/Home.php`)
+
+```php
+namespace App\Controllers;
+
+class Home extends BaseController
+{
+    public function index(): string
+    {
+        // Initialize GridPHP with CI4 database config
+        $g = new \jqgrid(config('GridPHP')->dbconf());
+
+        // Set table name
+        $g->table = 'customers';
+
+        // Render grid HTML and JavaScript snippet
+        $data['output'] = $g->render('my_first_grid');
+
+        // Pass output to view
+        return view('hello_grid', $data);
+    }
+}
+```
+
+##### 2. Routes (`app/Config/Routes.php`)
+
+Ensure routes are registered both `get` and `post` for master and detail endpoint:
+
+```php
+// for fetching data
+$routes->get('/', 'Home::index');
+// for CRUD operations
+$routes->post('/', 'Home::index');
+```
+
+##### 3. View (`app/Views/hello_grid.php`)
+
+Include GridPHP scripts/styles in your view header and output `$output`:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World Grid</title>
+
+    <!-- GridPHP Assets -->
+    <link rel="stylesheet" type="text/css" media="screen" href="gridphp/assets/themes/base/jquery-ui.custom.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="gridphp/assets/jqgrid/css/ui.jqgrid.css">
+    <script src="gridphp/assets/jquery.min.js"></script>
+    <script src="gridphp/assets/jqgrid/js/i18n/grid.locale-en.js"></script>
+    <script src="gridphp/assets/themes/jquery-ui.custom.min.js"></script>
+    <script src="gridphp/assets/jqgrid/js/jquery.jqGrid.min.js"></script>
+
+</head>
+<body>
+
+    <div style="margin: 20px;">
+        <h2>Hello World Datagrid</h2>
+        <?= $output ?>
+    </div>
+
+</body>
+</html>
+```
+
+---
+
+#### Walkthrough 2: Master-Detail Grid
+
+This walkthrough demonstrates a feature-rich Master Grid linked to a Detail Subgrid via an AJAX endpoint.
+
+##### 1. Controller for Master & Detail (`app/Controllers/Home.php`)
+
+```php
+namespace App\Controllers;
+
+class Home extends BaseController
+{
+    // Master Grid Page
+    public function index(): string
+    {
+        $g = new \jqgrid(config('GridPHP')->dbconf());
+
+        // Configure Master Grid Options
+        $g->set_options([
+            'caption'     => 'Customer Directory (Master)',
+            'multiselect' => true,
+            'subGrid'     => true,
+            'subgridurl'  => 'detail', // Subgrid AJAX endpoint
+        ]);
+
+        $g->table = 'customers';
+        $g->select_command = 'SELECT customer_id, company_name, contact_name, city, country FROM customers';
+
+        // Column Formatters
+        $g->set_columns([
+            ['name' => 'country', 'formatter' => 'badge'],
+            ['name' => 'city',    'formatter' => 'badge'],
+        ], true);
+
+        // Actions: Export, Edit, Delete
+        $g->set_actions([
+            'export' => true,
+            'add'    => true,
+            'edit'   => true,
+            'delete' => true,
+        ]);
+
+        $data['output'] = $g->render('master_customers');
+
+        return view('welcome_message', $data);
+    }
+
+    // Detail Subgrid Endpoint (AJAX payload)
+    public function detail(): string
+    {
+        $g = new \jqgrid(config('GridPHP')->dbconf());
+
+        $g->set_options([
+            'caption'  => '',
+            'readonly' => true,
+            'toolbar'  => 'bottom',
+        ]);
+
+        $g->table = 'orders';
+
+        // Filter detail records by rowid passed from parent row
+        $customerId = $this->request->getGet('rowid') ?? '';
+        $g->select_command = "SELECT order_id, order_date, shipped_date, freight, ship_name FROM orders WHERE customer_id = '{$customerId}'";
+
+        // Return raw rendered subgrid for AJAX injection
+        return $g->render('detail_orders');
+    }
+}
+```
+
+##### 2. Routes (`app/Config/Routes.php`)
+
+Ensure routes are registered both `get` and `post` for master and detail endpoint:
+
+```php
+// for fetching data
+$routes->get('/', 'Home::index');
+$routes->get('detail', 'Home::detail');
+
+// for CRUD operations
+$routes->post('/', 'Home::index');
+$routes->post('detail', 'Home::detail');
+```
+
+##### 3. View (`app/Views/welcome_message.php`)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Master-Detail Grid</title>
+
+    <!-- GridPHP Assets -->
+    <link rel="stylesheet" type="text/css" media="screen" href="gridphp/assets/themes/base/jquery-ui.custom.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="gridphp/assets/jqgrid/css/ui.jqgrid.css">
+    <script src="gridphp/assets/jquery.min.js"></script>
+    <script src="gridphp/assets/jqgrid/js/i18n/grid.locale-en.js"></script>
+    <script src="gridphp/assets/themes/jquery-ui.custom.min.js"></script>
+    <script src="gridphp/assets/jqgrid/js/jquery.jqGrid.min.js"></script>
+	
+</head>
+<body>
+
+    <div class="container" style="padding: 20px;">
+        <h1>Master-Detail Datagrid</h1>
+        <?= $output ?>
+    </div>
+
+</body>
+</html>
+```
+
+### Manual Installation
+
+To start from scratch without the starter project, you can integrate GridPHP manually by following the steps below.
+
+For this walk-through, we used:
 
 - GridPHP Framework 2.9
 - Latest version of CodeIgniter (v4+)
@@ -2884,43 +3062,49 @@ In this code we used MySQL, however you can use PHP DataGrid combination with al
 
 ![](https://www.gridphp.com/wp-content/uploads/ci4-grid4php.png)
 
+#### Integration Steps
+
 Steps to integrate are very simple.
 
-### Step 1:  Download CodeIgniter
+<Steps>
 
-Download CodeIgniter archive from  [Github repository](https://github.com/CodeIgniter4/framework/releases/tag/v4.1.3)  and extract it in your public_html / htdocs / similar web public folder of your web server. Make sure it is showing the CI startup page.
+1. Download CodeIgniter
 
-### Step 2: Download Grid4PHP
+	Download CodeIgniter archive from  [Github repository](https://github.com/CodeIgniter4/framework/releases/tag/v4.1.3)  and extract it in your public_html / htdocs / similar web public folder of your web server. Make sure it is showing the CI startup page.
 
-Download the Grid4PHP archive from  [our website](https://www.gridphp.com/download/). You can either use free OR paid version, Comparison is  [available here](https://www.gridphp.com/compare/). Free version provides basic essential functions for evaluation purpose.
+2. Download Grid4PHP
 
-### Step 3: Extract in CodeIgniter Folder
+	Download the Grid4PHP archive from  [our website](https://www.gridphp.com/download/). You can either use free OR paid version, Comparison is  [available here](https://www.gridphp.com/compare/). Free version provides basic essential functions for evaluation purpose.
 
-Extract the Grid4PHP archive and move the `lib` folder from archive to the `public` folder of CodeIgniter.
+3. Extract in CodeIgniter Folder
 
-### Step 4: Setup Controller 
+	Extract the Grid4PHP archive and move the `lib` folder from archive to the `public` folder of CodeIgniter.
 
-Replace the code of CI’s Controller `app\Controller\Home.php` with this sample controller code.
+4. Setup Controller
 
-<script src="https://gist.github.com/gridphp/857e8254d58d5f91fe43ca69bbd059d6.js?file=Home.php"></script>
+	Replace the code of CI’s Controller `app\Controller\Home.php` with this sample controller code.
 
-In Controller, make sure you set the  **database configuration**  (Line 9-14) and a  **table**  to fetch data (Line 25), according to your requirement.
+	<script src="https://gist.github.com/gridphp/857e8254d58d5f91fe43ca69bbd059d6.js?file=Home.php"></script>
 
-### Step 5: Setup View
+	In Controller, make sure you set the  **database configuration**  (Line 9-14) and a  **table**  to fetch data (Line 25), according to your requirement.
 
-In View, include the `JS` and `CSS` files and echo variable passed from controller. CI’s View welcome_message can be replaced with this sample view code.
+5. Setup View
 
-<script src="https://gist.github.com/gridphp/857e8254d58d5f91fe43ca69bbd059d6.js?file=welcome_message.php"></script>
+	In View, include the `JS` and `CSS` files and echo variable passed from controller. CI’s View welcome_message can be replaced with this sample view code.
 
-### Step 6: Set Routes
+	<script src="https://gist.github.com/gridphp/857e8254d58d5f91fe43ca69bbd059d6.js?file=welcome_message.php"></script>
 
-In Routes.php, Set both POST and GET routes for the controller function.
+6. Set Routes
 
-<script src="https://gist.github.com/gridphp/857e8254d58d5f91fe43ca69bbd059d6.js?file=Routes.php"></script>
+	In Routes.php, Set both POST and GET routes for the controller function.
 
-### Result
+	<script src="https://gist.github.com/gridphp/857e8254d58d5f91fe43ca69bbd059d6.js?file=Routes.php"></script>
 
-![](https://www.gridphp.com/wp-content/uploads/ci4-grid4php.png)
+7. Result
+
+	![](https://www.gridphp.com/wp-content/uploads/ci4-grid4php.png)
+
+</Steps>
 
 ### Troubleshooting
 
