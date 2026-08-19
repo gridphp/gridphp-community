@@ -290,7 +290,7 @@ function do_install()
 
 				<?php if (!$sqlite_installed): ?>
 				<div class="alert alert-error">
-					<strong>Warning:</strong> The SQLite extension is not installed/enabled in PHP. Please enable it in your php.ini or select an alternate database (like MySQL) below.
+					<strong>Warning:</strong> The SQLite extension is not installed/enabled in PHP. Please enable it in your php.ini and restart your server - OR - select an alternate database (like MySQL) below.
 				</div>
 				<?php endif; ?>
 

@@ -1,0 +1,4 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule (.*).phps code.php?file=$1.php [L]
+</IfModule>

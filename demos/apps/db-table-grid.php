@@ -32,10 +32,11 @@ session_start();
 $con = ADONewConnection($db_conf["type"]);
 $con->Connect($db_conf["server"], $db_conf["user"], $db_conf["password"], $db_conf["database"]);
 
-// for postgres
 if ($db_conf["type"] == "postgres")
 	$result = $con->Execute("SELECT * FROM pg_catalog.pg_tables WHERE schemaname != 'pg_catalog' AND schemaname != 'information_schema'");
-else
+else if ($db_conf["type"] == "sqlite3")
+	$result = $con->Execute("SELECT name FROM sqlite_schema WHERE type='table' AND name NOT LIKE 'sqlite_%' ORDER BY name");
+else 
 	$result = $con->Execute("SHOW TABLES");
 
 $table_arr = $result->GetRows();
@@ -155,14 +156,13 @@ if (!empty($tab))
 	<link href="//cdn.jsdelivr.net/gh/wenzhixin/multiple-select@1.2.1/multiple-select.css" rel="stylesheet" />
 	<script src="//cdn.jsdelivr.net/gh/wenzhixin/multiple-select@1.2.1/multiple-select.js"></script>	
 
-	<title>.: PHP DataGrid :. <?php echo ucwords($tab) ?> - Grid 4 PHP Framework</title>
+	<title>.: PHP DataGrid :. <?php echo ucwords($tab) ?> - GridPHP Framework</title>
 </head>
 <body>
-	<style>form {font-family: "Open Sans", tahoma;}</style>
+	<style>* {font-family: "Open Sans", tahoma; font-size:14px; vertical-align: bottom;}</style>
 	<form method="post">
 		<fieldset>
-		<legend>Database Tables</legend>
-		Select: 
+		<legend>Select Database Table</legend>
 		<select name="tables" onchange="get_fields();" style="width:200px;">
 			<?php
 				$arr = $table_arr;
@@ -250,7 +250,7 @@ if (!empty($tab))
 		});		
 		
 		</script>
-		<input type="submit" value="Load Table">
+		<input type="submit" value="Generate Datagrid">
 		</fieldset>
 	</form>
 	<?php if (!empty($out)) { ?>

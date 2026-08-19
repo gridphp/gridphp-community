@@ -1,93 +1,201 @@
-<!-- title: PHP Grid Framework Documentation -->
-<!-- subtitle: Superchange your development speed -->
 
-# Grid 4 PHP Framework Documentation
+# GridPHP Framework Documentation
 
-## Introduction
+## Quick Start
 
-### Overview
+### Introduction
 
-![Getting Started Overview](//www.gridphp.com/wp-content/gallery/documentation/getting-started.png)
-
-Grid 4 PHP Framework is a RAD tool that enables development of PHP based project far more faster.
+GridPHP Framework is a RAD tool that enables development of PHP based project far more faster.
 Grid component itself contain a CRUD (create,read,update,delete) function which reduce the repeated work load.
 It support connection to all major database engines including SQL Server, Oracle, IBM DB2, MySQL, Postgres and others.
 It has master-detail, subgrid, data grouping, file uploading, excel mode and many other features.
 
-## Setup
+[Live Interactive Demo](https://www.gridphp.com/demo/demos/promo/index.php)
 
-### Requirements
+### Setting up the package
 
-On server side, we need:
+Get started by downloading and running the community package locally:
 
-1) A Webserver running PHP v5.6+ (v5.6 and onwards)
+<Steps>
 
-2) Database server (MySql, SQL Server, Oracle, SQLite or any other you use)
+1. Download the package using `composer`, `wget` or the direct [Download Link](https://www.gridphp.com/wp-content/uploads/gridphp-free-latest.zip):
 
-On client side, we have tested it on famous browsers of Windows, MacOS and Linux.
+	```bash
+	composer create-project gridphp/gridphp-community gridphp-community-main
+	```
+	Or
+	```bash
+	wget https://www.gridphp.com/wp-content/uploads/gridphp-free-latest.zip
+	```
 
-### Installing Demos using Web Installer
+2. Extract the package and move to your web server root 
+	
+	OR Run via PHP built-in server:
 
-1) Extract the downloaded product archive in web root. e.g. www/gridphp
+	```bash
+	unzip gridphp-free-latest.zip
+	cd gridphp-community-main
+	php -S localhost:8000
+	```
+	Open [http://localhost:8080](http://localhost:8080) in your browser.
 
-2) Open it in browser to run installer. e.g. http://localhost/gridphp and following the intallation steps.
+	<Badge text="Note" variant="caution" /> In case you see "The SQLite extension is not installed/enabled in PHP":
+	
+	1. Open your `php.ini`
+	2. Uncomment (remove `;`) from `extension=pdo_sqlite` and `extension=sqlite3`
+		```ini
+		extension=pdo_sqlite
+		extension=sqlite3
+		```
+	3. Restart your server `php -S localhost:8000`
+
+3. You can copy any code sample from the `demos` folder and update `config.php` to connect to your custom database. In order to integrate files in your custom project, Refer to the next section.
+
+</Steps>
+
+### Installing Demos using Web Installer (Non-SQLite Setup)
+
+If you prefer to use a database like MySQL right away instead of SQLite, you can use the web-based visual installer:
+
+<Steps>
+
+1. Extract the downloaded product archive in web root. e.g. www/gridphp
+
+2. Remove the `database.db` from `demos/sample-db`
+
+3. Open it in browser to run installer. e.g. http://localhost/gridphp and following the intallation steps.
+
+</Steps>
 
 ### Installing Demos Manually
 
-1) Execute "demos/sample-db/database-mysql.sql" on a Mysql Database. It will create 'griddemo' database. For SQL Server installation same process can be followed using database-mssql.sql file.
+If you prefer a manual database setup, follow these steps:
 
-2) Place all files in a directory on the web server. e.g. ".../www/gridphp/"
+<Steps>
 
-3) Rename config.sample.php to config.php, and update database config. e.g.
+1. Execute `demos/sample-db/database-mysql.sql` on a MySQL Database. It will create `griddemo` database. For PostgreSQL or SQLServer installation same process can be followed using respective database script in `sample-db` folder.
 
+2. Place all files in a directory on the web server. e.g. `www/gridphp/`
+
+3. Rename `config.sample.php` to `config.php`, and update database config. e.g.
+
+	```php	
 	define("PHPGRID_DBTYPE","mysqli");
 	define("PHPGRID_DBHOST","localhost");
 	define("PHPGRID_DBUSER","root");
-	define("PHPGRID_DBPASS","");
+	define("PHPGRID_DBPASS","pass");
 	define("PHPGRID_DBNAME","griddemo");
+	```
 
-	// It will work in normal cases, unless you change lib folder location
-	define("PHPGRID_LIBPATH",dirname(__FILE__).DIRECTORY_SEPARATOR."lib".DIRECTORY_SEPARATOR);
+4. Run the product demos in browser. e.g. http://localhost/gridphp/index.php
 
-4) Run the product demos in browser. e.g. http://localhost/gridphp/index.php
+</Steps>
 
-### Integration in your Project
+### Requirements
 
-To integration in your app, copy 'lib' folder to your project. You need to consider 3 things.
+On server-side, we need:
 
-1) Set DB config
+1. A Web Server: running PHP v7.2 or higher.
+2. A Database: MySQL, MariaDB, PostgreSQL, SQLite, SQL Server, Oracle or any other database.
 
-	$db_conf = array();
-	$db_conf["type"] = "mysqli";
-	$db_conf["server"] = PHPGRID_DBHOST; // or you mysql ip
-	$db_conf["user"] = PHPGRID_DBUSER; // username
-	$db_conf["password"] = PHPGRID_DBPASS; // password
-	$db_conf["database"] = PHPGRID_DBNAME; // database
+## Create a Basic Grid
 
-	// pass connection array to jqgrid()
-	$g = new jqgrid($db_conf);
+<Steps>
 
-2) The folder `../../lib` will be replaced by path where you place `lib` folder (if changed)
+1. From the GridPHP archive, copy `config.php` and `lib` folder in your new project folder.
 
-	<link rel="stylesheet" type="text/css" media="screen" href="../../lib/js/themes/start/jquery-ui.custom.css"></link>
-	<link rel="stylesheet" type="text/css" media="screen" href="../../lib/js/jqgrid/css/ui.jqgrid.css"></link>
-	<script src="../../lib/js/jquery.min.js" type="text/javascript"></script>
-	<script src="../../lib/js/jqgrid/js/i18n/grid.locale-en.js" type="text/javascript"></script>
-	<script src="../../lib/js/jqgrid/js/jquery.jqGrid.min.js" type="text/javascript"></script>
-	<script src="../../lib/js/themes/jquery-ui.custom.min.js" type="text/javascript"></script>
+2. Update your database configuration in `config.php`. e.g.
 
-3) Update include path where you place `lib/inc/` folder (if changed)
+	```php
+	define("PHPGRID_DBTYPE","mysqli"); 
+	define("PHPGRID_DBHOST","127.0.0.1");
+	define("PHPGRID_DBUSER","db-user");
+	define("PHPGRID_DBPASS","db-pass");
+	define("PHPGRID_DBNAME","griddemo");
+	```
 
-	include("../../lib/inc/jqgrid_dist.php");
-	$g = new jqgrid($db_conf);
+3. Create a new file, e.g. firstgrid.php and add following code:
 
-### Upgrading from older version
+	```php
+	include_once("config.php");
 
-To upgrade you just need to update files of two folder `lib/inc` & `lib/js`.
+	// include and create object
+	include(PHPGRID_LIBPATH."inc/jqgrid_dist.php");
+	$g = new jqgrid();
 
-- Take a backup of current `lib/inc` & `lib/js` folders.
-- Replace `lib/inc` & `lib/js` from the new version archive to your existing datagrid implementation.  
-- You may need to clear browser cache to remove the effect of previous JS and CSS files.
+	// set grid options
+	$opt["caption"] = "Sample Grid";
+	$g->set_options($opt);
+
+	// set database table for your CRUD operations
+	$g->table = "clients";
+
+	// render grid and get html/js output
+	$out = $g->render("mylist");
+	```
+
+4. Adjust the JS and CSS dependencies folder paths (if changed)
+
+	```html
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<link rel="stylesheet" href="lib/js/themes/redmond/jquery-ui.custom.css" />
+		<link rel="stylesheet" href="lib/js/jqgrid/css/ui.jqgrid.css" />
+		<script src="lib/js/jquery.min.js" type="text/javascript"></script>
+		<script src="lib/js/jqgrid/js/i18n/grid.locale-en.js" type="text/javascript"></script>
+		<script src="lib/js/jqgrid/js/jquery.jqGrid.min.js" type="text/javascript"></script>
+		<script src="lib/js/themes/jquery-ui.custom.min.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<div>
+			<!-- display grid here -->
+			<?php echo $out?>
+		</div>
+	</body>
+	</html>
+	```	
+</Steps>
+
+[See Live Demo](//www.gridphp.com/demo/demos/editing/index.php)
+
+### Explanation
+
+- **Backend Setup**: PHP compiles the grid configuration and stores the output in $out.
+- **Frontend Rendering**: Render $out in your view and ensure required CSS/JS assets are loaded.
+- **Configuration (`set_options`)**: Use `set_options()` as the central API to customize all grid behaviors.
+- **Data Mapping (`table`)**: Define a database table to instantly bootstrap full CRUD functionality.
+- **Mounting (`render`)**: Call `render('grid_id')` with a unique ID to compile and mount the grid to the DOM.
+
+### Database Configuration in Code
+
+You can also skip `config.php` and load configuration on code as well.
+
+```php
+$db_conf = array();
+$db_conf["type"] = "mysqli";
+$db_conf["server"] = "localhost";
+$db_conf["user"] = "db-user";
+$db_conf["password"] = "db-pass";
+$db_conf["database"] = "db-name";
+
+// pass connection array to jqgrid
+$g = new jqgrid($db_conf);
+
+// rest of the code ...
+```
+
+You can also place the `lib/inc` folder in your classes and `lib/js` folder in publicly accessible folder. In such case, make sure your change the PHP include paths & script/css paths accordingly. 
+
+## Upgrading your version
+
+### Drop-in Replacement
+
+To upgrade you just need drop-in replacement of `lib` folder.
+
+- Take a backup of current `lib` folder.
+- Replace `lib` from the new version archive to your existing datagrid implementation.  
+- Clear browser cache.
 
 Same process applies when upgrading from free version to full version.
 
@@ -109,81 +217,6 @@ In v2.8 and onwards, move this code inside a setTimeout() delay of 10ms:
 
 	},10);
 	
-## Creating First Grid
-
-Step1: Add PHP Grid configuration code
-
-	<?php
-	include_once("../../config.php");
-
-	// include and create object
-	include(PHPGRID_LIBPATH."inc/jqgrid_dist.php");
-
-	$db_conf = array(
-						"type" 		=> PHPGRID_DBTYPE,
-						"server" 	=> PHPGRID_DBHOST,
-						"user" 		=> PHPGRID_DBUSER,
-						"password" 	=> PHPGRID_DBPASS,
-						"database" 	=> PHPGRID_DBNAME
-					);
-
-	$g = new jqgrid($db_conf);
-
-	// set few params
-	$opt["caption"] = "Sample Grid";
-	$g->set_options($opt);
-
-	// set database table for CRUD operations
-	$g->table = "clients";
-
-	// render grid and get html/js output
-	$out = $g->render("list1");
-	?>
-
-Step2: Include JS and CSS files in your html page
-
-	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-	<html>
-	<head>
-
-		<!-- these css and js files are required by php grid -->
-		<link rel="stylesheet" href="../../lib/js/themes/redmond/jquery-ui.custom.css"></link>
-		<link rel="stylesheet" href="../../lib/js/jqgrid/css/ui.jqgrid.css"></link>
-		<script src="../../lib/js/jquery.min.js" type="text/javascript"></script>
-		<script src="../../lib/js/jqgrid/js/i18n/grid.locale-en.js" type="text/javascript"></script>
-		<script src="../../lib/js/jqgrid/js/jquery.jqGrid.min.js" type="text/javascript"></script>
-		<script src="../../lib/js/themes/jquery-ui.custom.min.js" type="text/javascript"></script>
-		<!-- these css and js files are required by php grid -->
-
-	</head>
-
-Step3: Print the `$out` variable where you wish to display grid.
-
-	<body>
-		<div>
-
-		<!-- display grid here -->
-		<?php echo $out?>
-		<!-- display grid here -->
-
-		</div>
-	</body>
-	</html>
-
-### Resources
-
-- [Sample Code](//www.gridphp.com/demo/demos/editing/index.phps)
-- [See Live Demo](//www.gridphp.com/demo/demos/editing/index.php)
-- You can check this demo in archive `demos/editing/index.php`
-
-### Explanation
-
-- The PHP Part configured the grid and rendered the output to $out variable.
-- In HTML Part, we displayed the generated grid code `$out` along with few external css/js files. It's upto you to place external css and js files at appropriate locations.
-- `->set_options()` function is most of the customization, we'll be covering later.
-- `->table` is required, to enable automatic select,add,update,delete operations on that table. By default all columns of the table are selected on grid. We'll review how to select particular columns.
-- `->render()` will generate the final output, to be displayed in view. It takes **Grid ID** as input, which should be unique on a page.
-
 ## Selecting Columns
 
 By default, when we define the `->table` property, it displays all the columns of table. 
@@ -233,7 +266,6 @@ Only column with name 'company' will be changed to textarea and rest table colum
 
 ### Resources
 
-- [Sample Code](//www.gridphp.com/demo/demos/appearance/image.phps)
 - [See Live Demo](//www.gridphp.com/demo/demos/appearance/image.php)
 - You can check this demo in archive `demos/appearance/image.php`
 
@@ -434,7 +466,7 @@ For custom formatter of percentage display
 	$col["formatter"] = "function(cellval,options,rowdata){ return Number(parseFloat(cellval)*100).toFixed(2)+'%'; }";
 	$col["unformat"] = "function(cellval,options,cell){ return cellval.replace('%','')/100; }";
 
-For custom formatter of fix height row (having html <br> content)
+For custom formatter of fix height row (having html `<br/>` content)
 
 	$col["formatter"] = "function(cellval,options,rowdata){ return '<div style=\"height:25px; overflow:hidden;\">'+cellval+'</div>'; }";
 	$col["unformat"] = "function(cellval,options,cell){ return jQuery(cell).children('div').html(); }";
@@ -663,8 +695,9 @@ Property `editoptions` indexes are: foreign key table, foreign key id, label to 
 	$col["editoptions"] = array("table"=>"employees", "id"=>"employee_id", "label"=>"concat(first_name,' ',last_name)");
 
 Above will create a query like: select employee_id as k, concat(firstname,' ',last_name) as v from employees.
-You can also provide your own query for dropdown by:
 
+You can also provide your own query for dropdown.
+	
 	$col["editoptions"]["sql"] = "select employee_id as k, concat(firstname,' ',last_name) as v from employees"; 
 
 ### Render dropdown as a colored badge
@@ -1229,7 +1262,6 @@ To extra params passed to detail grid, column name comma separated
 
 ### Resources
 
-- [Sample Code](//www.gridphp.com/demo/demos/master-detail/master-detail.phps)
 - [See Live Demo](//www.gridphp.com/demo/demos/master-detail/master-detail.php)
 - You can check this demo in archive `demos/master-detail/master-detail.php`
 
@@ -1259,7 +1291,6 @@ For extra params passed from parent other than rowid (e.g. company), we need som
 
 ### Resources
 
-- [Sample Code](//www.gridphp.com/demo/demos/master-detail/subgrid.phps)
 - [See Live Demo](//www.gridphp.com/demo/demos/master-detail/subgrid.php)
 - You can check this demo in archive `demos/master-detail/subgrid.php`
 
@@ -1282,9 +1313,9 @@ To define multiple subgrid at same level, just render 2 grids in detail grid pag
 
 ### Resources
 
+- [See Live Demo](//www.gridphp.com/demo/demos/master-detail/multi-subgrid.php)
 - [Parent Grid Code](//www.gridphp.com/demo/demos/master-detail/multi-subgrid.phps)
 - [Detail Grid Code](//www.gridphp.com/demo/demos/master-detail/multi-subgrid-detail.phps)
-- [See Live Demo](//www.gridphp.com/demo/demos/master-detail/multi-subgrid.php)
 - You can check this demo in archive `demos/master-detail/multi-subgrid.php`
 
 ## Exporting Data
@@ -1343,7 +1374,6 @@ You can also add export buttons on toolbar by:
 
 ### Resources
 
-- [Sample Code](//www.gridphp.com/demo/demos/export/export-all.phps)
 - [See Live Demo](//www.gridphp.com/demo/demos/export/export-all.php)
 - You can check this demo in archive `demos/export/export-all.php`
 
@@ -1399,7 +1429,6 @@ To show import dialog on startup, set this code in loadComplete event. Here list
 									
 ### Resources
 
-- [Sample Code](//www.gridphp.com/demo/demos/export/import.phps)
 - [See Live Demo](//www.gridphp.com/demo/demos/export/import.php)
 - You can check this demo in archive `demos/export/import.php`
 
@@ -1449,7 +1478,6 @@ Refer demos/appearance/conditional-format.php for reference.
 
 ### Resources
 
-- [Sample Code](//www.gridphp.com/demo/demos/appearance/conditional-format.phps)
 - [See Live Demo](//www.gridphp.com/demo/demos/appearance/conditional-format.php)
 - You can check this demo in archive `demos/appearance/conditional-format.php`
 
@@ -1497,7 +1525,6 @@ Following setting will enable grouping footer in grid. (see grouping.php)
 
 ### Resources
 
-- [Sample Code](//www.gridphp.com/demo/demos/appearance/grouping.phps)
 - [See Live Demo](//www.gridphp.com/demo/demos/appearance/grouping.php)
 - You can check this demo in archive `demos/appearance/grouping.php`
 
@@ -1528,7 +1555,6 @@ It would help in categorizing your related columns. (demos/appearance/group-head
 
 ### Resources
 
-- [Sample Code](//www.gridphp.com/demo/demos/appearance/group-headers.phps)
 - [See Live Demo](//www.gridphp.com/demo/demos/appearance/group-headers.php)
 - You can check this demo in archive `demos/appearance/group-headers.php`
 
@@ -1576,7 +1602,6 @@ Possible values are `simple`, `advance`
 
 ### Resources
 
-- [Sample Code](//www.gridphp.com/demo/demos/search/search-group.phps)
 - [See Live Demo](//www.gridphp.com/demo/demos/search/search-group.php)
 - You can check this demo in archive `demos/search/search-group.php`
 
@@ -1608,7 +1633,6 @@ You can also set predefined search templates using grid options.
 
 ### Resources
 
-- [Sample Code](//www.gridphp.com/demo/demos/search/search-template.phps)
 - [See Live Demo](//www.gridphp.com/demo/demos/search/search-template.php)
 - You can check this demo in archive `demos/search/search-template.php`
 
@@ -1621,7 +1645,6 @@ connect it to datagrid search javascript api.
 
 ### Resources
 
-- [Sample Code](//www.gridphp.com/demo/demos/search/search-form.phps)
 - [See Live Demo](//www.gridphp.com/demo/demos/search/search-form.php)
 - You can check this demo in archive `demos/search/search-form.php`
 
@@ -1647,7 +1670,6 @@ If you wish to persist search settings on page reload:
 
 ### Resources
 
-- [Sample Code](//www.gridphp.com/demo/demos/search/search-onload.phps)
 - [See Live Demo](//www.gridphp.com/demo/demos/search/search-onload.php)
 - You can check this demo in archive `demos/search/search-onload.php`
 
@@ -1663,7 +1685,6 @@ To have a numeric range filter, (total > 10) you can set e.g. ?grid_id=list1&fil
 
 ### Resources
 
-- [Sample Code](//www.gridphp.com/demo/demos/search/search-onload-url.phps)
 - [See Live Demo](//www.gridphp.com/demo/demos/search/search-onload-url.php)
 - You can check this demo in archive `demos/search/search-onload-url.php`
 
@@ -1853,7 +1874,6 @@ Step2: Define JS event handler (where 'list1' is grid id and 'company' is field 
 
 ### Resources
 
-- [Sample Code](//www.gridphp.com/demo/demos/editing/custom-events.phps)
 - [See Live Demo](//www.gridphp.com/demo/demos/editing/custom-events.php)
 - You can check this demo in archive `demos/editing/custom-events.php`
 
@@ -1917,7 +1937,6 @@ Callback function will receive the posted data. e.g. for add dialog:
 
 ### Resources
 
-- [Sample Code](//www.gridphp.com/demo/demos/editing/js-validation.phps)
 - [See Live Demo](//www.gridphp.com/demo/demos/editing/js-validation.php)
 - You can check this demo in archive `demos/editing/js-validation.php`
 
@@ -1950,7 +1969,6 @@ Step2: The helper function ‘phpgrid_error’ will display your server side val
 
 ### Resources
 
-- [Sample Code](//www.gridphp.com/demo/demos/editing/server-validation.phps)
 - [See Live Demo](//www.gridphp.com/demo/demos/editing/server-validation.php)
 - You can check this demo in archive `demos/editing/server-validation.php`
 
@@ -2019,7 +2037,6 @@ More details can be checked here: https://stackoverflow.com/a/16102850/385377
 
 ### Resources
 
-- [Sample Code](//www.gridphp.com/demo/demos/editing/file-upload.phps)
 - [See Live Demo](//www.gridphp.com/demo/demos/editing/file-upload.php)
 - You can check this demo in archive `demos/editing/file-upload.php`
 
@@ -2059,7 +2076,6 @@ For more advanced example, refer sample code below.
 
 ### Resources
 
-- [Sample Code](//www.gridphp.com/demo/demos/appearance/footer-row.phps)
 - [See Live Demo](//www.gridphp.com/demo/demos/appearance/footer-row.php)
 - You can check this demo in archive `demos/appearance/footer-row.php`
 
@@ -2130,7 +2146,6 @@ By default, autocomplete uses 'contains' search. To switch to 'begins with' set:
 
 ### Resources
 
-- [Sample Code](//www.gridphp.com/demo/demos/integrations/autocomplete.phps)
 - [See Live Demo](//www.gridphp.com/demo/demos/integrations/autocomplete.php)
 - You can check this demo in archive `demos/integrations/autocomplete.php`
 
@@ -2138,8 +2153,8 @@ By default, autocomplete uses 'contains' search. To switch to 'begins with' set:
 
 Step1: Include JS / CSS files required to have this feature. Make sure you include JS files after jQuery JS inclusion.
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-multiselect-widget/1.17/jquery.multiselect.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-multiselect-widget/1.17/jquery.multiselect.filter.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-multiselect-widget/1.17/jquery.multiselect.css"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-multiselect-widget/1.17/jquery.multiselect.filter.css"/>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-multiselect-widget/1.17/jquery.multiselect.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-multiselect-widget/1.17/jquery.multiselect.filter.js"></script>
 
@@ -2191,11 +2206,14 @@ If your column contains foreign key data (like client_id) then implementation wi
 
 ### Resources
 
-- [Sample Code](//www.gridphp.com/demo/demos/integrations/multiselect-filter.phps)
 - [See Live Demo](//www.gridphp.com/demo/demos/integrations/multiselect-filter.php)
 - You can check this demo in archive `demos/integrations/multiselect-filter.php`
 
 ## Inline Charts
+
+You can integrate bar chart, spark lines and other charts in any cell.
+
+[See Live Demo](//www.gridphp.com/demo/demos/appearance/bar-graph.php)
 
 ## HTML Editor
 
@@ -2314,7 +2332,6 @@ Step2: Before displaying grid echo $out, set persistence options in script tag:
 
 ### Resources
 
-- [Sample Code](//www.gridphp.com/demo/demos/misc/persist-settings.phps)
 - [See Live Demo](//www.gridphp.com/demo/demos/misc/persist-settings.php)
 - You can check this demo in archive `demos/misc/persist-settings.php`
 
@@ -2368,7 +2385,6 @@ And display of add/edit/view dialogs are transposed as well.
 
 ### Resources
 
-- [Sample Code](//www.gridphp.com/demo/demos/appearance/responsive.phps)
 - [See Live Demo](//www.gridphp.com/demo/demos/appearance/responsive.php)
 - You can check this demo in archive `demos/appearance/responsive.php`
 
@@ -2393,7 +2409,6 @@ To enable text labels in your desired language, change source of the local javas
 
 ### Resources
 
-- [Sample Code](//www.gridphp.com/demo/demos/misc/localization.phps)
 - [See Live Demo](//www.gridphp.com/demo/demos/misc/localization.php)
 - You can check this demo in archive `demos/misc/localization.php`
 
@@ -2455,13 +2470,12 @@ Steps:
 
 ### Resources
 
-- [Sample Code](//www.gridphp.com/demo/demos/appearance/themes.phps)
 - [See Live Demo](//www.gridphp.com/demo/demos/appearance/themes.php)
 - You can check this demo in archive `demos/appearance/themes.php`
 
 ## Connecting with SQL Server
 
-Following code snippet connect PHP Grid Framework to SQL Server.
+Following code snippet connect GridPHP Framework to SQL Server.
 
 	$db_conf = array();
 	$db_conf["type"] = "mssqlnative";
@@ -2475,11 +2489,6 @@ Following code snippet connect PHP Grid Framework to SQL Server.
 	...
 
 	$g->table = "[msdb].[dbo].[syscategories]";
-
-### Resources
-
-- [Sample Code](//www.gridphp.com/demo/demos/loading/db-layer-sqlsvr.phps)
-- You can check this demo in archive `demos/loading/db-layer-sqlsvr.php`
 
 Connecting Azure database:
 
@@ -2503,12 +2512,12 @@ Using PDO for SQL Server Azure:
 	$db_conf["database"] = "griddemo"; // database
 
 	include("../../lib/inc/jqgrid_dist.php");
-	$g = new jqgrid($db_conf);
+	$g = new jqgrid($db_conf);	
 
 ### Resources
 
-- [Sample Code](//www.gridphp.com/demo/demos/loading/db-layer-sqlsvr-azure.phps)
-- You can check this demo in archive `demos/loading/db-layer-sqlsvr-azure.php`
+- [Sample Code](//www.gridphp.com/demo/demos/loading/db-layer-sqlsvr.phps)
+- You can check this demo in archive `demos/loading/db-layer-sqlsvr.php`
 
 ## Connecting with Postgres
 
@@ -2544,7 +2553,7 @@ Following code snippet connect PHP Grid with Oracle.
 
 ### Resources
 
-- [Oracle Sample Code](//www.gridphp.com/demo/demos/loading/oracle-master-detail.phps)
+- [Oracle Sample Code](//www.gridphp.com/demo/demos/loading/db-layer-oracle.phps)
 - You can check this demo in archive `demos/loading/oracle-master-detail.php`
 
 ## Database Functions
@@ -2613,8 +2622,7 @@ Mobile screen:
 
 ### Resources
 
-- [See Live Demo](//www.gridphp.com/demo/demos/apps/todos.php)
-- [Source Code](//www.gridphp.com/demo/demos/apps/todos.phps)
+- [Live Demo](//www.gridphp.com/demo/demos/apps/todos.php)
 
 ## Application Templates
 
@@ -2670,7 +2678,52 @@ We have released five application templates so far, with more coming soon.
 
 ## Database Table Editor
 
+The Table Editor automatically detects and loads all tables from your configured database. You can easily manage database connectivity and control table visibility by restricting or explicitly allowing specific tables.
+
+1. Database Connection
+	To connect the tool to your database, configure the $db_conf array with your credentials. It supports multiple database engines including MySQL, PostgreSQL, Oracle, and SQL Server.
+
+	```php
+	$db_conf = array();
+	$db_conf["type"]     = PHPGRID_DBTYPE;   // Options: mysql, oci8 (Oracle), mssql, postgres, sybase
+	$db_conf["server"]   = PHPGRID_DBHOST;
+	$db_conf["user"]     = PHPGRID_DBUSER;
+	$db_conf["password"] = PHPGRID_DBPASS;
+	$db_conf["database"] = PHPGRID_DBNAME;
+	```
+
+2. Table & Fields Selection
+	The page automatically detects and lists all available tables from your database. Simply select the table you wish to work with & fields of the table you need then click "Generate Datagrid" to proceed.
+
+	By default, the Table Editor exposes all tables within the connected database. You can fine-tune this behavior using Blocklists (Restricted) or Allowlists (Allowed). e.g.
+
+	```php
+	// Tables that should NOT be shown in the table editor
+	$restricted_tables = array(
+		"migrations",
+		"failed_jobs",
+		"user_passwords",
+		"system_settings"
+	);
+	```
+
+	OR
+
+	```php
+	// ONLY these tables will be shown in the table editor
+	$allowed_tables = array(
+		"customers",
+		"orders",
+		"products",
+		"invoices"
+	);
+	```
+
+[Live Demo](https://www.gridphp.com/demo/demos/apps/db-table-grid.php)
+
 ## RSS News Reader
+
+[Live Demo](https://www.gridphp.com/demo/demos/apps/rss-reader.php)
 
 ## Laravel Integration
 
@@ -2678,10 +2731,10 @@ Following is the guide to integrate PHP Editable DataGrid with Laravel v12.
 
 ### Step 1: Folder placements in Laravel.
 
-There are 2 main folders in Grid 4 PHP Framework package archive. You need to:
+There are 2 main folders in GridPHP Framework package archive. You need to:
 
-- Copy the contents of lib/inc folder —> <Laravel>/app/Classes/Gridphp
-- Copy the contents of lib/js folder —> <Laravel>/public/assets/gridphp
+- Copy the contents of `lib/inc` folder to `Laravel-Project/app/Classes/Gridphp`
+- Copy the contents of `lib/js` folder to `Laravel-Project/public/assets/gridphp`
 
 ![Step1](https://www.gridphp.com/wp-content/uploads/gridphp-laravel-step1-1024x733.png)
 
@@ -2736,7 +2789,7 @@ The Editable DataGrid for Laravel!
 
 ## WordPress Integration
 
-We've published a new simplified tutorial on how to integrate Grid 4 PHP Framework with WordPress Sites. 
+We've published a new simplified tutorial on how to integrate GridPHP Framework with WordPress Sites. 
 WordPress misses a comprehensive Editable Table, DataGrid and a CRUD solution, so we've integrated it to solve the problem.
 
 ![](https://www.gridphp.com/wp-content/uploads/gridphp-wp6-1024x760.png)
@@ -2823,7 +2876,7 @@ You can create more snippets by copying code from package demos and assign new u
 
 We've made a quick walk-through how to integrate the smart PHP DataGrid with CodeIgniter framework. For this, we have used:
 
-- Grid 4 PHP Framework 2.9
+- GridPHP Framework 2.9
 - Latest version of CodeIgniter (v4+)
 - PHP 8 (can work on lower supported versions as well)
 
@@ -2883,7 +2936,7 @@ Few considerations before use
 1)  include the jqgrid_dist.php file before any thing rendered to output.
 2)  Check the ajax response of grid,
 
-Also make sure you call '$g->render();' function before any HTML is rendered
+Also make sure you call `$g->render();` function before any HTML is rendered
 (echo'd) to output, as it expect exact JSON format for ajax calls. You can echo the output of render() function to desired location in html.
 
 Use firefox->firebug->net->ajax-call of grid->response. You will see the output there, in case of any error. It should be proper JSON format data in order to render grid
@@ -2902,7 +2955,7 @@ To enable debugging errors,
 	...
 	$g->con->debug = 1;
 
-### Q) How can i integrate Grid 4 PHP in MVC based frameworks like Laravel, Yii, Codeignitor, Zend Framework, CakePHP and others.
+### Q) How can i integrate GridPHP in MVC based frameworks like Laravel, Yii, Codeignitor, Zend Framework, CakePHP and others.
 
 To integrate in MVC, You can divide code in 2 sections. And put first in controller and pass the $out variable to view, where you can render it with rest of JS/CSS files.
 
@@ -2972,7 +3025,7 @@ Incorrect: Including jQuery twice, by theme template or other plugin
 	
 	<!-- some other code -->
 	
-	<script src="<some-other-plugin>/js/jquery.min.js" type="text/javascript"></script>
+	<script src="some-other-plugin/js/jquery.min.js" type="text/javascript"></script>
 
 Make sure you include JQuery JS file before other JS files and include only once in your page. 
 
@@ -3342,7 +3395,7 @@ First you need to get the handler for load complete.
 	$g->set_events($e);
 
 Then in JS callback, you can have following code. This will iterate all rows and find row with name 'Victoria Ashworth'.
-It then uses row's first column 'client_id' to get <TR> id and focus it with scrollTop().
+It then uses row's first column `client_id` to get `<TR>` id and focus it with scrollTop().
 
 	<script>
 	function do_onload()
@@ -3672,7 +3725,7 @@ This inclues grid font, dialogs and toolbar. This will be helpful when using in 
 
 ### Q) How to show animated progress bar instead of text 'Loading...'?
 
-You can replace text with some string containing html <img> tag.
+You can replace text with some string containing html `<img>` tag.
 
 	$grid["loadtext"] = "Loading...";
 	$g->set_options($grid);
@@ -3929,12 +3982,14 @@ Here are the steps:
 
 3) Connect to search field. If your column name is 'name' then search field will have id gs_name.
 
+	```html
 	<script>
 	function do_onload(id)
 	{
 		$("#gs_name").attr("placeholder","Search Name ...");
 	}
 	</script>
+	```
 
 ### Q) Tooltip for cells based on other columns?
 
@@ -4174,7 +4229,7 @@ Where "list1" is ID of grid passed in render() function, and "name" is the colum
 
 You can pick input jquery id selectors, and link it using any lib.
 
-Library 1: For e.g. http://igorescobar.github.io/jQuery-Mask-Plugin/
+Library 1: jQuery Mask - http://igorescobar.github.io/jQuery-Mask-Plugin/
 
 Step1: Add JS lib
 
@@ -4188,7 +4243,7 @@ Step2: Set field integration, usually $col['name'] is ID of html element
 
 For more options, refer: http://igorescobar.github.io/jQuery-Mask-Plugin/
 
-Library 2: For e.g. http://github.com/RobinHerbots/jquery.inputmask
+Library 2: Input Mask - http://github.com/RobinHerbots/jquery.inputmask
 
 Step1: Add JS lib
 
@@ -4233,7 +4288,7 @@ And use dataInit property for autocomplete lookup:
 	$col["editoptions"]["dataInit"] = "function(o){  jQuery(o).jeoCityAutoComplete(); }";
 	$cols[] = $col;
 
-### Q) How to use 'select2' comboxbox like function with Grid 4 PHP?
+### Q) How to use 'select2' comboxbox like function with GridPHP?
 
 1) Added 'dataInit' line with select column:
 
@@ -4267,11 +4322,11 @@ Use following on page css.
 	ul[id*=category_id].select2-results__options { background: #cbf4ff; }
 	</style>
 
-### Q) How to use 'qtip2' with Grid 4 PHP?
+### Q) How to use 'qtip2' with GridPHP?
 
 1) Include JS/CSS
 
-	<link rel="stylesheet" href="//cdn.jsdelivr.net/qtip2/2.2.1/jquery.qtip.min.css">
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/qtip2/2.2.1/jquery.qtip.min.css"/>
 	<script src="//cdn.jsdelivr.net/qtip2/2.2.1/jquery.qtip.min.js"></script>
 
 2) Connect onload event
@@ -4281,6 +4336,7 @@ Use following on page css.
 
 3) Connect qtip2 e.g. for all title attributes
 
+	```html
     <style>
     .qtip-content{
         font-family: tahoma, helvetica, 'sans-serif';
@@ -4298,6 +4354,7 @@ Use following on page css.
                             });
     }
     </script>
+	```
 
 ### Q) How to fill dropdown with different values w.r.t. record?
 
@@ -4416,7 +4473,7 @@ Following config will show add dialog on load, given that `list1` is grid id.
 
 	$g->set_options($grid);
 
-And it would show when you access url with querystring showform=add, e.g. http://<domain>/index.php?showform=add
+And it would show when you access url with querystring showform=add, e.g. http://domain.com/index.php?showform=add
 
 To open edit dialog for first row on loading grid, you can set:
 
@@ -5580,7 +5637,7 @@ On blank export and on checking error_log if you see
 There are 2 options for fix.
 
 First is it to install zip php extension that is required by phpexcel library.
-Other one is to rename 'PHPExcel' folder in <gridphp>/lib/inc/excel/ with '_PHPExcel'
+Other one is to rename 'PHPExcel' folder in `gridphp/lib/inc/excel/` with `_PHPExcel`
 
 If this path is not found, our system uses older excel exporting library which might work without zip extension.
 
@@ -5598,7 +5655,7 @@ To start with blank grid, set:
 
 where `list1` is grid id.
 	
-### Q) Performance of large tables in Grid 4 PHP?
+### Q) Performance of large tables in GridPHP?
 
 Performance of loading data in grid consist of 2 parts.
 
@@ -5684,8 +5741,8 @@ This can be done by using mysql convert_tz function in query.
 
 Step1: Include js/css files
 
-    <link rel="stylesheet" href="http://www.erichynds.com/examples/jquery-ui-multiselect-widget/jquery.multiselect.css">
-    <link rel="stylesheet" href="http://www.erichynds.com/examples/jquery-ui-multiselect-widget/jquery.multiselect.filter.css">
+    <link rel="stylesheet" href="http://www.erichynds.com/examples/jquery-ui-multiselect-widget/jquery.multiselect.css"/>
+    <link rel="stylesheet" href="http://www.erichynds.com/examples/jquery-ui-multiselect-widget/jquery.multiselect.filter.css"/>
     <script src="http://www.erichynds.com/examples/jquery-ui-multiselect-widget/src/jquery.multiselect.js"></script>
     <script src="http://www.erichynds.com/examples/jquery-ui-multiselect-widget/src/jquery.multiselect.filter.js"></script>
 
